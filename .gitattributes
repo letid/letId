@@ -21,6 +21,7 @@
 /project            export-ignore
 /app                export-ignore
 /public             export-ignore
+/app             export-ignore
 /.git               export-ignore
 /index.php          export-ignore
 /composer.lock      export-ignore
