@@ -4,11 +4,9 @@ class Http
 {
 	const SLA = '/';
 	const SLB = '\\';
-	protected static $host,$uri,$error,$warning,
-		$message=array(),
+	protected static $host,$uri,$error,$warning, $message=array(),
 		$Header,$Content,$ContentType;
-	protected static $setting=array();
-	protected $tostring;
+	// protected $tostring;
 	public function __construct()
 	{
 		session_start();
@@ -20,40 +18,49 @@ class Http
     {
 		// session_unset($_SESSION[self::$host]);
 		if ($Name=self::getApplicationName()) {
-			self::$setting['name'] = $Name;
-		} else if($this->Application && $Name=self::isApplication()) {
-			self::$setting['name'] = self::setApplicationName($Name);
-		} else if($this->Default) {
-			self::$setting['name'] = self::setApplicationName($this->Default);
+			$this->application = $Name;
+		} else if($this->application && $Name=self::isApplication()) {
+			$this->application = self::setApplicationName($Name);
+		} else if($this->default) {
+			$this->application = self::setApplicationName($this->default);
+		} else {
+			$this->application = array();
 		}
-		if(self::$setting['name']) {
+		if($this->application) {
 			if(is_dir(static::Root())) {
-				if(self::getRoot(static::Root().self::$setting['name'].self::SLA)){
+				if(self::getRoot(static::Root().$this->application.self::SLA)){
 					self::setLoader();
-					// self::$Content = \App\Abc::createApplication();
-				} else if(self::getRoot(static::Error())) {
-					self::$Content = require self::$setting['dir']."invalid.configuration.html";
+					if(class_exists(\App\Initiate::class)){
+						$Initiate = new \App\Initiate();
+						self::$Content = $Initiate::Application();
+					} else {
+						self::Response('invalid.configuration.html','Invalid directory configuration!');
+					}
 				} else {
-					self::$Content = 'Invalid directory configuration!';
+					self::Response('invalid.configuration.html','Invalid directory configuration!');
 				}
-			} else if(self::getRoot(static::Error())) {
-				self::$Content = include self::$setting['dir']."invalid.configuration.html";
 			} else {
-				self::$Content = 'Invalid directory configuration!';
+				self::Response('invalid.configuration.html','Invalid directory configuration!');
 			}
 		} else {
-			if(self::getRoot(static::Error())) {
-				self::$Content = require_once self::$setting['dir']."invalid.configuration.html";
-			} else {
-				self::$Content = 'Invalid directory configuration!';
-			}
+			self::Response('invalid.configuration.html','Invalid directory configuration!');
 		}
     }
+	private function Response($file,$msg)
+    {
+		if(self::getRoot(static::Error())) {
+			ob_start();
+			include $this->directory['root'].$file;
+			self::$Content = ob_get_clean();
+		} else {
+			self::$Content = $msg;
+		}
+	}
 	private function setLoader()
     {
 		$loader = new \Composer\Autoload\ClassLoader();
 		// $loader->add($this->Name(),self::$setting['dir'],true);
-		$loader->addPsr4($this->Name().self::SLB,array(self::$setting['dir']),true);
+		$loader->addPsr4($this->getName().self::SLB,array($this->directory['root']),true);
 		// activate the autoloader
 		$loader->register(true);
 		// to enable searching the include path (eg. for PEAR packages)
@@ -62,7 +69,7 @@ class Http
 	}
 	private function isApplication()
     {
-		foreach ($this->Application as $Name => $Regex) {
+		foreach ($this->application as $Name => $Regex) {
 			if($Regex && self::isRegex(is_array($Regex)?$Regex:array($Regex))) {
 				return $Name;
 			}
@@ -89,10 +96,19 @@ class Http
 	private function getRoot($d)
     {
 		if(file_exists($d)) {
-			return self::$setting['dir'] = $d;
+			if(is_array($this->directory)){
+				foreach ($this->directory as $name => $v) {
+					$this->directory[$name] = $d.$this->directory[$name].self::SLA;
+				}
+			}
+			return $this->directory['root'] = $d;
 		}
 		// return is_dir($q);
 		// return file_exists($file);
+	}
+	private function getName()
+    {
+		return $this->Name();
 	}
 	public function meset($q)
     {

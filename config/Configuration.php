@@ -3,7 +3,10 @@ namespace App;
 use Lethil;
 class Configuration extends Lethil\Config\Project
 {
-    protected $Application = array(
+    /*
+    Application -> hostname
+    */
+    protected $application = array(
         'lethil'=>"lethil.localhost",
         'localhost'=>".localhost",
         'zaideih'=>array(
@@ -12,29 +15,49 @@ class Configuration extends Lethil\Config\Project
         'storage.zaideih'=>"abc",
         'storage'=>array()
     );
-    // protected $Available = array('zaideih');
-    protected $Default = null;
     /*
-    this Method tells the root directory of the application to Core!
+    MySQL Connection!
     */
+    protected $database = array(
+        'username'=>"root",
+        'password'=>"search",
+        'host'=>'localhost',
+        'port'=>3066,
+    );
+    /*
+    If default has value, this will return when hostname has not match!
+    */
+    protected $default = null;
+    /*
+    Core will modify this directory!
+    */
+    protected $directory=array(
+        "template"=>'template',
+        "css"=>'css',
+        "js"=>'js'
+    );
     protected function Root()
     {
-        return '../apps/';
-        // return __DIR__.'/../apps/';
+        /*
+        this Method tells the root directory of the application to Core!
+        If you prefer full Path prepend {__DIR__}, as {__DIR__.'/../apps/'};
+        */
+        return '../app/';
     }
-    /*
-    this Method tells the errors directory of the application to Core!
-    */
     protected function Error()
     {
+        /*
+        this Method tells the errors directory of the application to Core!
+        If you prefer full Path prepend {__DIR__}!
+        */
         return '../app/errors/';
-        // return __DIR__.'/../app/errors/';
     }
-    /*
-    this Method tells the Application namespace to Core!
-    */
     protected function Name()
     {
+        /*
+        this Method tells the Application namespace to Core!
+        Current namespace must be match to your app Initiate's namespace!
+        */
         return __NAMESPACE__;
     }
 }
