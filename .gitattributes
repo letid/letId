@@ -19,6 +19,7 @@
 # Composer package excluded
 /config             export-ignore
 /project            export-ignore
+/app                export-ignore
 /public             export-ignore
 /.git               export-ignore
 /index.php          export-ignore
