@@ -1,0 +1,94 @@
+
+Options -MultiViews
+
+RewriteEngine On
+RewriteBase /
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)/$ /$1 [L,R=301]
+
+RewriteCond %{THE_REQUEST} ^GET\ /pro/
+RewriteCond %{HTTP_HOST} !^www
+RewriteCond %{HTTP_HOST} ^([^\.]+)\.([^\.]+)\.([^\.]+)$
+RewriteRule ^pro/(.*)$ /project/%1/$1 [L]
+RewriteCond %{HTTP_HOST} ^(?:www\.)?([^\.]+)\.([^\.]+)$
+RewriteRule ^pro/(.*)$ /project/%1/$1 [L]
+
+
+Options -MultiViews
+RewriteEngine On
+RewriteBase /
+
+
+-----
+RewriteCond %{HTTP_HOST} !^www
+RewriteCond %{HTTP_HOST} ^(.+)\.(.+)\.(.+)$
+RewriteRule ^(css|js|fonts|img)/(.*\.(js|css))$ /project-a/%1/template/$0  [L]
+RewriteCond %{HTTP_HOST} ^(?:www\.)?([^\.]+)\.([^\.]+)$
+RewriteRule ^(css|js|fonts|img)/(.*\.(js|css))$ /project-b/%1/template/$0  [L]
+-----
+-----
+RewriteCond %{HTTP_HOST} !^www
+RewriteCond %{HTTP_HOST} ^(.+)\.(.+)\.(.+)$
+RewriteRule ^css|js|fonts|img/(.*)$ /project-a/%1/template/$0  [L]
+RewriteCond %{HTTP_HOST} ^(?:www\.)?([^\.]+)\.([^\.]+)$
+RewriteRule ^css|js|fonts|img/(.*)$ /project-b/%1/template/$0  [L]
+
+# Redirect Trailing Slashes If Not A Folder...
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)/$ /$1 [L,R=301]
+
+# Handle Front Controller...
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ index.php [L]
+
+-----
+RewriteCond %{HTTP_HOST} ^(?:www\.)?([^\.]+)\.([^\.]+)$
+
+RewriteRule ^(css|js|fonts)/(.*)$ /project-a/%1/template/$0 [L]
+RewriteCond %{HTTP_HOST} ^(?:www\.)?([^\.]+)\.([^\.]+)$
+RewriteRule .*\.(js|css|png|jpg)$ /project-b/%1/page/$0 [L]
+
+RewriteCond %{HTTP_HOST} ^(.+)\.(.+)\.(.+)$
+RewriteRule ^(css|js|fonts|img)/(.*\.(js|css))$ /project-c/%1/template/$0  [L]
+RewriteCond %{HTTP_HOST} ^(.+)\.(.+)\.(.+)$
+RewriteRule .*\.(js|css|png|jpg)$ /project-b/%1/page/$0 [L]
+
+RewriteRule ^ index.php [L]
+-----
+
+-----
+RewriteCond %{HTTP_HOST} !^www
+RewriteCond %{HTTP_HOST} ^(.+)\.(.+)\.(.+)$
+RewriteRule ^css|js|fonts/(.*)$ /project-b/%1/template/$0$1
+RewriteCond %{HTTP_HOST} ^(?:www\.)?([^\.]+)\.([^\.]+)$
+RewriteRule ^css|js|fonts/(.*)$ /project-b/%1/template/$0$1
+-----
+
+RewriteCond %{HTTP_HOST} !^www
+RewriteCond %{HTTP_HOST} ^(.+)\.(.+)\.(.+)$
+RewriteRule ^css/(.*)$ /project-a/%1/$1 [L]
+RewriteCond %{HTTP_HOST} ^(?:www\.)?([^\.]+)\.([^\.]+)$
+RewriteRule ^css/(.*)$ /project-b/%1/$1 [L]
+
+-----
+
+RewriteRule .*\.(jpg|jpeg|gif|png|bmp)$ /index.php/index.php/index.php
+
+.*\.(js|css|png|jpg)$
+
+RewriteRule ^(css|js|fonts|img)/(.*\.(js|css))$ /project-b/%1/template/$0  [L]
+
+RewriteCond %{THE_REQUEST} ^GET\ /css/
+RewriteCond %{HTTP_HOST} !^www
+RewriteCond %{HTTP_HOST} ^(?:www\.)?([^\.]+)\.([^\.]+)$
+RewriteRule ^css/(.*)$ /project1/%1/$1 [L]
+RewriteCond %{HTTP_HOST} ^(?:www\.)?([^\.]+)\.([^\.]+)$
+RewriteRule ^css/(.*)$ /project2/%1/$1 [L]
+-----
+
+RewriteCond %{HTTP_HOST} ^(www\.)?([a-z0-9-]+)\.example\.com [NC]
+RewriteRule .? - [E=Wa:%1,E=Wb:%2]
+RewriteRule ^(.*?)-([a-z]+) %{ENV:Wb}/$1.%{ENV:Wb} [L]
+RewriteRule ^(.*?)-([0-9]+)([a-z]) %{ENV:Wb}/$1$3.$2 [L]
