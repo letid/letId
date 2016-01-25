@@ -1,13 +1,13 @@
 {
-    "name": "khensolomon/lethil",
+    "name": "letid/lethil",
     "description": "PHP Application",
     "type": "project",
     "license": "MIT",
-    "homepage": "https://github.com/khensolomonl/lethil",
+    "homepage": "https://github.com/letid/lethil",
     "repositories": [
         {
             "type": "git",
-            "url": "https://github.com/khensolomon/lethil.git"
+            "url": "https://github.com/letid/lethil.git"
         }
     ],
     "keywords": [
@@ -23,7 +23,7 @@
     ],
     "extra": {
         "branch-alias": {
-            "dev-master": "1.0.5-dev"
+            "dev-master": "1.0.0-dev"
         }
     },
     "minimum-stability": "dev",

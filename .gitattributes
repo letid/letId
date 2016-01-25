@@ -20,6 +20,7 @@
 /config             export-ignore
 /project            export-ignore
 /public             export-ignore
+/app             export-ignore
 /.git               export-ignore
 /index.php          export-ignore
 /composer.lock      export-ignore
