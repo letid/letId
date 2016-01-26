@@ -30,3 +30,6 @@ development/assets/*/job*
 /public/*.html
 ExampleTest.php
 TestCase.php
+
+# Composer
+/src/

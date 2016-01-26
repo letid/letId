@@ -1,7 +1,6 @@
 <?php
 namespace App;
-use Lethil;
-class Configuration extends Lethil\Config\Project
+class Configuration extends \Lethil\Config\Project
 {
     /*
     Application -> hostname
@@ -16,18 +15,19 @@ class Configuration extends Lethil\Config\Project
         'storage'=>array()
     );
     /*
-    MySQL Connection!
-    */
-    protected $database = array(
-        'username'=>"root",
-        'password'=>"search",
-        'host'=>'localhost',
-        'port'=>3066,
-    );
-    /*
     If default has value, this will return when hostname has not match!
     */
     protected $default = null;
+    /*
+    MySQL Connection!
+    */
+    protected $database = array(
+        'host'=>'localhost',
+        'database'=>null,
+        'port'=>3306,
+        'username'=>"root",
+        'password'=>""
+    );
     /*
     Core will modify this directory!
     */
@@ -44,13 +44,13 @@ class Configuration extends Lethil\Config\Project
         */
         return '../app/';
     }
-    protected function Error()
+    protected function Message()
     {
         /*
         this Method tells the errors directory of the application to Core!
         If you prefer full Path prepend {__DIR__}!
         */
-        return '../app/errors/';
+        return '../app/message/';
     }
     protected function Name()
     {

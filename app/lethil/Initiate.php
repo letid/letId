@@ -1,10 +1,18 @@
 <?php
 namespace App;
-class Initiate
+class Initiate extends Configuration
 {
+    protected $database = array(
+        'database'=>'test',
+        'password'=>"search"
+    );
     public function Application()
     {
         print_r($this);
-        return '...TestCase...';
+        return '...TestCase...';// self::$databases['password'];
+    }
+    public function Database()
+    {
+
     }
 }
