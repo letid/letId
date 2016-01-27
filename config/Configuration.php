@@ -1,12 +1,12 @@
 <?php
 namespace App;
-class Configuration extends \Lethil\Config\Project
+class Configuration extends \Letid\Config\Project
 {
     /*
     Application -> hostname
     */
     protected $application = array(
-        'lethil'=>"lethil.localhost",
+        'letid'=>"lethil.localhost",
         'localhost'=>".localhost",
         'zaideih'=>array(
             "zaideih.com",".zaideih.com",".zaideih."

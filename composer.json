@@ -40,24 +40,21 @@
         "psr-0": {
             "App": "config/"
         },
-        "psr-4": {
-            "Lethil\\": "src/"
-        },
+        "psr-4": {},
         "classmap": [],
         "files": []
     },
     "autoload-dev": {
-        "classmap": []
+        "psr-0": {},
+        "psr-4": {
+            "Letid\\": "src/framework/"
+        },
+        "classmap": [],
+        "files": []
     },
     "archive": {
         "exclude": [
-            "/config",
-            "/public",
-            "/project",
             "/.git",
-            "/index.php",
-            "/composer.lock",
-            "/composer.phar",
             "/*.gitattributes",
             "/*.gitignore",
             "/*.test", "!/foo/bar/baz"]
