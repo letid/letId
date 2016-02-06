@@ -1,17 +1,22 @@
 <?php
 namespace App;
-class Configuration extends \Letid\Config\Project
+class Configuration extends \Letid\Config\Application
 {
     /*
-    Application -> hostname
+    this Method tells the Application namespace to Core!
+    Current namespace must be match to your app Initiate's namespace!
+    */
+    const ANS = __NAMESPACE__;
+    /*
+    Application (folder) -> hostname (regex without slash)
     */
     protected $application = array(
-        'letid'=>"lethil.localhost",
+        'lethil'=>"lethil.localhost",
         'localhost'=>".localhost",
-        'zaideih'=>array(
-            "zaideih.com",".zaideih.com",".zaideih."
+        'example'=>array(
+            "example.com",".example.com",".example."
         ),
-        'storage.zaideih'=>"abc",
+        'storage-example'=>"storage.example",
         'storage'=>array()
     );
     /*
@@ -23,41 +28,33 @@ class Configuration extends \Letid\Config\Project
     */
     protected $database = array(
         'host'=>'localhost',
-        'database'=>null,
         'port'=>3306,
         'username'=>"root",
-        'password'=>""
+        // 'password'=>null,
+        // 'database'=>null
     );
     /*
     Core will modify this directory!
     */
     protected $directory=array(
-        "template"=>'template',
+        "template"=>'template/fe',
         "css"=>'css',
         "js"=>'js'
     );
+    /*
+    this Method tells the root directory of the application to Core!
+    If you prefer full Path prepend {__DIR__}, as {__DIR__.'/../apps/'};
+    */
     protected function Root()
     {
-        /*
-        this Method tells the root directory of the application to Core!
-        If you prefer full Path prepend {__DIR__}, as {__DIR__.'/../apps/'};
-        */
         return '../app/';
     }
+    /*
+    this Method tells the errors directory of the application to Core!
+    If you prefer full Path prepend {__DIR__}!
+    */
     protected function Message()
     {
-        /*
-        this Method tells the errors directory of the application to Core!
-        If you prefer full Path prepend {__DIR__}!
-        */
         return '../app/message/';
-    }
-    protected function Name()
-    {
-        /*
-        this Method tells the Application namespace to Core!
-        Current namespace must be match to your app Initiate's namespace!
-        */
-        return __NAMESPACE__;
     }
 }
