@@ -1,7 +1,7 @@
 Lethil PHP Application
 =======
 
-The **Letid** PHP framework based application!
+The **Letid** is a framework application based PHP language!
 
 Installation
 ------------
@@ -20,3 +20,5 @@ or add require section in your composer.json.
 Other
 ----
 For [License](LICENSE) information.
+
+lost!

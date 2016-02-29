@@ -6,6 +6,10 @@
         - Application
         - Database
 
+
+# add new Class in config for Page?
+
+
 PHP Framework Open Source
 Multiply
 Project

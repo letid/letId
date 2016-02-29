@@ -1,6 +1,7 @@
 composer.phar
 /vendor/
 /src/
+*.[A-Z0-9].*
 
 # Commit your application's lock file http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file
 # You may choose to ignore a library lock file http://getcomposer.org/doc/02-libraries.md#lock-file
@@ -19,6 +20,7 @@ output
 *delete.*
 *tmp.*
 *Copy.*
+*[0-9]+.*
 development/assets/*/*[0-9].*
 development/assets/*/*Delete*.*
 development/assets/*/*Working*.*
