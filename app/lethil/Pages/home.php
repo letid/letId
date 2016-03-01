@@ -10,6 +10,11 @@ class home extends page
     }
     public function home()
     {
+        // print_r(self::$scoreVar);
+        // print_r($this->hostname);
+        // print_r($this->uri);
+        // print_r($this);
+        // $this->love();
         return array(
             'home'=>array(
                 'page.id'=>'home',
@@ -41,6 +46,7 @@ class home extends page
                 )
             )
         );
+        // echo "\n";
         // return 'this came from home::home()';
     }
 }

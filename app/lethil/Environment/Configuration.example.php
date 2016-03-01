@@ -1,11 +1,12 @@
 <?php
 namespace App\Environment;
+use App\Application;
 /*
     NOTE: in order to use MySQL
     1. this filename has to be renamed (Configuration.example.php) to (Configuration.php)
     2. Config $database
 */
-class Configuration extends \App\Initiate
+class Configuration extends Application
 {
     /*
         $database: ARRAY Database Connection!

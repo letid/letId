@@ -1,10 +1,8 @@
 <?php
 namespace App\Pages;
-// use Letid\Config;
-abstract class page
+use Letid\Request;
+abstract class page extends Request\Application
 {
-    // use \Letid\Config\Message;
-    // use Config\Page;
     public function __construct()
     {
         /*

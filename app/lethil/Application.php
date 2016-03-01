@@ -1,20 +1,8 @@
 <?php
 namespace App;
 // use Letid\Database\Query;
-class Initiate extends Routine
+class Application extends Routine
 {
-    /*
-    $map, $directory, $application, $responsive, $uri, $hostname,
-    $page;
-    */
-    // protected static $pages = array();
-
-    // public function __construct()
-	// {
-    //     /*
-    //     constructor!
-    //     */
-	// }
     protected $page = array(
         'home'=>array(
             'Class'=>'home',
@@ -39,13 +27,13 @@ class Initiate extends Routine
             )
         )
     );
-    protected function Done()
-    {
-        // TODO: remove add comfirmed
-        // NOTE: executed after Completetion
-    }
-    protected function Application()
-    {
-        echo 'App\Initiate\Application';
-    }
+    // protected function Done()
+    // {
+    //     // TODO: remove add comfirmed
+    //     // NOTE: executed after Completetion
+    // }
+    // protected function Application()
+    // {
+    //     echo 'App\Application\Application';
+    // }
 }

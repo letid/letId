@@ -1,7 +1,10 @@
 <?php
 namespace App;
 use Letid\Http;
-class Routine extends Http\Application
+// extends Http\Application
+// extends Request\Http
+// extends Http\Request
+class Routine extends Http\Request
 {
     /*
         $map: Application (folder) -> hostname (regex without slashs)
@@ -21,9 +24,9 @@ class Routine extends Http\Application
     */
     // const AMP = '';
     /*
-        $directory: Core will modify this directory!
+        $dir: Core will modify this directory!
     */
-    protected $directory = array(
+    protected $dir = array(
         "template"=>'template',
         "css"=>'css',
         "js"=>'js'
