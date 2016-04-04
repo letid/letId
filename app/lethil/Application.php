@@ -1,12 +1,55 @@
 <?php
 namespace App;
-// use Letid\Database\Query;
-class Application extends Routine
+use Letid\Http;
+class Application extends Http\Request
 {
     protected $page = array(
         'home'=>array(
             'Class'=>'home',
-            'Method'=>'home'
+            'Method'=>'home',
+            'Menu'=>'Home'
+        ),
+        'redirect'=>array(
+            'Menu'=>'Redirect',
+            'Link'=>'http://www.google.com',
+            'Type'=>false
+        ),
+        'login'=>array(
+            'Class'=>'login',
+            'Method'=>'login',
+            'Menu'=>'Login',
+            'Type'=>'user',
+            'Auth'=>array('age'=>12)
+        ),
+        'music'=>array(
+            'Class'=>'music',
+            'Auth'=>array('age'=>30),
+            'album'=>array(
+                'Method'=>'album'
+            ),
+            'artist'=>array(
+                'Method'=>'artist'
+            )
+        )
+    );
+    /*
+    protected $page = array(
+        'home'=>array(
+            'Class'=>'home',
+            'Method'=>'home',
+            'Menu'=>'Home'
+        ),
+        'redirect'=>array(
+            'Menu'=>'Redirect',
+            'Link'=>'http://www.google.com',
+            'Type'=>false
+        ),
+        'login'=>array(
+            'Class'=>'login',
+            'Method'=>'login',
+            'Menu'=>'Login',
+            'Type'=>'user', // Navi, Navigator boolval(disable:false/true), string(enable:type), default:page
+            'Auth'=>array('age'=>18) // Auth, Authority, Authorization
         ),
         'music'=>array(
             'Class'=>'music',
@@ -27,13 +70,9 @@ class Application extends Routine
             )
         )
     );
-    // protected function Done()
-    // {
-    //     // TODO: remove add comfirmed
-    //     // NOTE: executed after Completetion
-    // }
-    // protected function Application()
-    // {
-    //     echo 'App\Application\Application';
-    // }
+    */
+    protected $config = array(
+        'core'=>'changed',
+        'application'=>'org'
+    );
 }

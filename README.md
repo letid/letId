@@ -1,11 +1,8 @@
 Lethil PHP Application
-=======
+=====================
+A very minimum requirement and aim to provided as light as possible Application using **letid** PHP framework!
 
-The **Letid** is a framework application based PHP language!
-
-Installation
-------------
-
+## Installation
 The preferred way to install this extension is through [composer](http://getcomposer.org/download/). Require letid/framework by doing one of the following
 
 ```
@@ -15,10 +12,5 @@ or add require section in your composer.json.
 ```
 "letid/framework": "~1.0.0"
 ```
-
-
-Other
-----
+## Other
 For [License](LICENSE) information.
-
-lost!

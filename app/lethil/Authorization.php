@@ -1,11 +1,14 @@
 <?php
 namespace App;
-class Authorization
+use Letid\Http;
+class Authorization extends Http\Initiate
 {
-    public function __construct()
+    public function age($v)
 	{
-        /*
-        constructor goes here!
-        */
+        // echo 'abc';
+        // print_r($this);
+        // print_r($var);
+        // echo "\n";
+        if ($v >= 10) return true;
 	}
 }

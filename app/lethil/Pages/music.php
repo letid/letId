@@ -1,15 +1,20 @@
 <?php
 namespace App\Pages;
-class music extends Page
+use App;
+use Letid\Request\DbQuery;
+class music extends App\Page
 {
     public function __construct()
     {
         /*
         constructor
         */
+        $this->menu = $this->menu();
+        echo $this->menu;
     }
     public function home()
     {
+        // print_r($this);
         return 'this came from music::home()';
     }
     public function album()
@@ -29,11 +34,3 @@ class music extends Page
         return 'this came from music::sort()';
     }
 }
-
-/*
-namespace App;
-class home extends Page
-namespace App\Page;
-use App;
-class home extends App\Page
-*/
