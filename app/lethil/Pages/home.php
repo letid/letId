@@ -1,23 +1,17 @@
 <?php
 namespace App\Pages;
 use App;
-use Letid\Request\DbQuery;
+// use Letid\Request\DbQuery;
 class home extends App\Page
 {
+    // public $pageHeader, $pageFooter, $pageContent;
+    // public $userMenu, $pageMenu;
     public function __construct()
     {
         /*
         constructor
         */
-        $num = '12';
-        $Option=array(
-			'type'=>'user'
-		);
-        // $num,123,'love',
-        $this->menu_page = $this->menu();
-        $this->menu_user = $this->menu($Option);
-        // echo $num;
-        // echo $this->menu;
+        $this->menu();
     }
     public function home()
     {
@@ -27,6 +21,7 @@ class home extends App\Page
             $this->rowConfig();
             $this->template(array);
             $this->database();
+            $this->lang();
         */
         // print_r(DbQuery::load("SELECT id FROM tables WHERE name LIKE 'Jo%'")->toArray()->hasCount());
         // print_r($this->database());
@@ -63,55 +58,101 @@ class home extends App\Page
         // } finally {
         //     echo "First finally.\n";
         // }
-        /*
-        $content = $this->template(
-            array(
-                'home.li'=>array(
-                    'home.li.one'=>'One of One',
-                    'home.li.two'=>'One of Two',
-                    'home.li.li'=>array(
-                        'home.li.li.one'=>'Two of One',
-                        'home.li.li.two'=>'Two of Two',
-                    )
-                )
-            )
-        );
-        */
-        // echo $this->menu_user;
+        $this->pageHeader='this is header!';
+        $this->pageFooter='this is footer!';
         return array(
-            'home'=>array(
+            'layout'=>array(
                 'page.id'=>'home',
                 'page.class'=>'home',
-                'Title'=>'Title is replaced',
-                'Description'=>'Description is replaced',
+                'Title'=>'Home',
+                'Description'=>'Description',
                 'Keywords'=>'PHP framework',
-                'menu.page'=>$this->menu_page,
-                'menu.user'=>$this->menu_user,
-                'home.li'=>array(
-                    'home.li.one'=>'One of One',
-                    'home.li.two'=>'One of Two',
-                    'home.li.li'=>array(
-                        'home.li.li.one'=>'Two of One',
-                        'home.li.li.two'=>'Two of Two',
-                    )
-                ),
-                'home.loop'=>array(
+                'page.content'=>$this->template(
                     array(
-                        'loop.one'=>'Loop One of One',
-                        'loop.two'=>'Loop One of Two',
-                    ),
-                    array(
-                        'loop.one'=>'Loop Two of One',
-                        'loop.two'=>'Loop Two of Two',
-                    ),
-                    array(
-                        'loop.one'=>'Loop Two of One',
-                        'loop.two'=>'last',
+                        'home'=>array(
+                            'home.li'=>array(
+                                'home.li.one'=>'One of One',
+                                'home.li.two'=>'One of Two',
+                                'home.li.li'=>array(
+                                    'home.li.li.one'=>'Two of One',
+                                    'home.li.li.two'=>'Two of Two',
+                                )
+                            ),
+                            'home.loop'=>array(
+                                array(
+                                    'loop.one'=>'Loop One of One',
+                                    'loop.two'=>'Loop One of Two',
+                                ),
+                                array(
+                                    'loop.one'=>'Loop Two of One',
+                                    'loop.two'=>'Loop Two of Two',
+                                ),
+                                array(
+                                    'loop.one'=>'Loop Two of One',
+                                    'loop.two'=>'last',
+                                )
+                            )
+                        )
                     )
                 )
             )
         );
-        // echo "\n";
-        // return 'this came from home::home()';
+    }
+    public function aboutUs()
+    {
+        return array(
+            'layout'=>array(
+                'page.id'=>'about-us',
+                'page.class'=>'about-us',
+                'Title'=>'About Us',
+                'Description'=>'About Us',
+                'Keywords'=>'PHP framework',
+                'page.content'=>$this->template(
+                    array(
+                        'aboutUs'=>array(
+                            'Heading'=>'About us'
+                        )
+                    )
+                )
+            )
+        );
+    }
+    public function terms()
+    {
+        return array(
+            'layout'=>array(
+                'page.id'=>'terms',
+                'page.class'=>'terms',
+                'Title'=>'Terms',
+                'Description'=>'Terms',
+                'Keywords'=>'PHP framework',
+                'page.content'=>$this->template(
+                    array(
+                        'terms'=>array(
+                            'Heading'=>'Terms'
+                        )
+                    )
+                )
+            )
+        );
+    }
+    public function privacy()
+    {
+        return array(
+            'layout'=>array(
+                'page.id'=>'privacy',
+                'page.class'=>'privacy',
+                'Title'=>'Privacy',
+                'Description'=>'Privacy',
+                'Keywords'=>'PHP framework',
+                'page.content'=>$this->template(
+                    array(
+                        'privacy'=>array(
+                            'Heading'=>'Privacy'
+                        )
+                    )
+                )
+            )
+        );
     }
 }

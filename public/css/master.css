@@ -1,0 +1,21 @@
+html, body {
+    margin:0; padding: 0;
+}
+.protal{
+
+}
+.protal >*{
+ padding: 4px; margin: 5px; background-color: #f5f5f5;
+}
+.protal >header{
+
+}
+.protal >footer{
+
+}
+.protal >div{
+
+}
+li.active > a {
+    color: red;
+}

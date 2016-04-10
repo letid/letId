@@ -9,17 +9,41 @@ class Application extends Http\Request
             'Method'=>'home',
             'Menu'=>'Home'
         ),
+        'about-us'=>array(
+        	'Method'=>'aboutUs',
+        	'Menu'=>'About us'
+        ),
+        'terms'=>array(
+        	'Method'=>'terms',
+        	'Menu'=>'Terms'
+        ),
+        'privacy'=>array(
+        	'Method'=>'privacy',
+        	'Menu'=>'Privacy'
+        ),
         'redirect'=>array(
             'Menu'=>'Redirect',
             'Link'=>'http://www.google.com',
             'Type'=>false
         ),
         'login'=>array(
-            'Class'=>'login',
+            'Class'=>'user',
             'Method'=>'login',
             'Menu'=>'Login',
             'Type'=>'user',
             'Auth'=>array('age'=>12)
+        ),
+        'forgot-password'=>array(
+            'Class'=>'user',
+            'Method'=>'forgotPassword',
+            'Menu'=>'Forgot Password',
+            'Type'=>'user'
+        ),
+        'register'=>array(
+            'Class'=>'user',
+            'Method'=>'register',
+            'Menu'=>'Register',
+            'Type'=>'user'
         ),
         'music'=>array(
             'Class'=>'music',
@@ -34,16 +58,6 @@ class Application extends Http\Request
     );
     /*
     protected $page = array(
-        'home'=>array(
-            'Class'=>'home',
-            'Method'=>'home',
-            'Menu'=>'Home'
-        ),
-        'redirect'=>array(
-            'Menu'=>'Redirect',
-            'Link'=>'http://www.google.com',
-            'Type'=>false
-        ),
         'login'=>array(
             'Class'=>'login',
             'Method'=>'login',
@@ -72,7 +86,6 @@ class Application extends Http\Request
     );
     */
     protected $config = array(
-        'core'=>'changed',
-        'application'=>'org'
+        'version'=>'1.0.1.2',
     );
 }
