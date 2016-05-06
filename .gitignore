@@ -1,6 +1,7 @@
 composer.phar
 /vendor/
 /src/
+/app/*/Environment.ini
 *.[A-Z0-9].*
 
 # Commit your application's lock file http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file

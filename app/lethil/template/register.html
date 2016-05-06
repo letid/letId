@@ -4,29 +4,31 @@
 </header>
 <div>
     <div class="">
-        <form method="post">
+        <form method="POST" name="registration">
             <h2>{Registration}</h2>
             <div>
                 <span>{Username}</span>
-                <input type="text" size="26" name="username" value="">
-                <em>*</em>
+                <input type="text" size="26" name="username" value="{registration_value_username}">
+                <em>{registration_mask_username}</em>
             </div>
             <div>
                 <span>{Password}</span>
-                <input type="text" size="26" name="password" value="">
-                <em>*</em>
+                <input type="password" size="26" name="password" value="{registration_value_password}">
+                <em>{registration_mask_password}</em>
             </div>
             <div>
                 <span>{Email}</span>
-                <input type="text" size="26" name="email" value="">
-                <em>*</em>
+                <input type="text" size="26" name="email" value="{registration_value_email}">
+                <em>{registration_mask_email}</em>
             </div>
             <div class="submit">
-                <input type="submit" name="submit" value="{Register}">
+                <input type="submit" name="registration" value="{Register}">
             </div>
+            {registration_form_message}
         </form>
     </div>
 </div>
 <footer>
-    {pageFooter}
+    {pageFooter} - {timer_finish}
 </footer>
+{error_get_last}

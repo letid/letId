@@ -1,46 +1,34 @@
 <?php
 namespace App\Pages;
 use App;
-// use Letid\Request\DbQuery;
+// use Letid\Request\Config;
+// use Letid\Request\Database;
 class home extends App\Page
 {
-    // public $pageHeader, $pageFooter, $pageContent;
-    // public $userMenu, $pageMenu;
     public function __construct()
     {
         /*
         constructor
         */
         $this->menu();
+
     }
     public function home()
     {
+        $this->error_get_last();
         /*
-            $this->setConfig(key,value);
-            $this->getConfig(key);
-            $this->rowConfig();
+            $this->config();
             $this->template(array);
-            $this->database();
             $this->lang();
         */
-        // print_r(DbQuery::load("SELECT id FROM tables WHERE name LIKE 'Jo%'")->toArray()->hasCount());
-        // print_r($this->database());
-        // print_r(self::$scoreVar);
-        // print_r($this->hostname);
-        // print_r($this->uri);
+        // print_r(Database::load("SELECT id FROM tables WHERE name LIKE 'Jo%'")->toArray()->hasCount());
         // print_r(get_declared_traits());
         // print_r(class_uses('not_loaded', true));
         // $this->setConfig('setConfigFromHome','Okey');
         // Config::set('Config::setFromHome','Okey');
-        // print_r($this->rowConfig());
         // print_r(Config::$list);
         // print_r($this);
         // print_r(Config::$letid);
-        // echo $this->config->verso;
-        // print_r(self::$config);
-        // echo $this->root->hostname;
-        // echo $this->ANC();
-        //setIt, getIt
         // print_r(class_parents($this));
         // print_r(get_class_methods($this));
         // echo $this->menu;

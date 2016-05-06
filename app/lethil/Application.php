@@ -36,7 +36,7 @@ class Application extends Http\Request
         'forgot-password'=>array(
             'Class'=>'user',
             'Method'=>'forgotPassword',
-            'Menu'=>'Forgot Password',
+            'Menu'=>'Forgot password',
             'Type'=>'user'
         ),
         'register'=>array(
@@ -46,6 +46,56 @@ class Application extends Http\Request
             'Type'=>'user'
         ),
         'music'=>array(
+            'Class'=>'music',
+            'Auth'=>array('age'=>30),
+            'album'=>array(
+                'Method'=>'album'
+            ),
+            'artist'=>array(
+                'Method'=>'artist'
+            )
+        ),
+        'music9'=>array(
+            'Class'=>'music',
+            'Auth'=>array('age'=>9),
+            'album'=>array(
+                'Method'=>'album'
+            ),
+            'artist'=>array(
+                'Method'=>'artist'
+            )
+        ),
+        'music8'=>array(
+            'Class'=>'music',
+            'Auth'=>array('age'=>8),
+            'album'=>array(
+                'Method'=>'album'
+            ),
+            'artist'=>array(
+                'Method'=>'artist'
+            )
+        ),
+        'music3'=>array(
+            'Class'=>'music',
+            'Auth'=>array('age'=>30),
+            'album'=>array(
+                'Method'=>'album'
+            ),
+            'artist'=>array(
+                'Method'=>'artist'
+            )
+        ),
+        'music4'=>array(
+            'Class'=>'music',
+            'Auth'=>array('age'=>30),
+            'album'=>array(
+                'Method'=>'album'
+            ),
+            'artist'=>array(
+                'Method'=>'artist'
+            )
+        ),
+        'music5'=>array(
             'Class'=>'music',
             'Auth'=>array('age'=>30),
             'album'=>array(
@@ -86,6 +136,6 @@ class Application extends Http\Request
     );
     */
     protected $config = array(
-        'version'=>'1.0.1.2',
+        'version'=>'1.0.9.1'
     );
 }
