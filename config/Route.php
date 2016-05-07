@@ -1,7 +1,6 @@
 <?php
 namespace App;
-use Letid\Http;
-class Route extends Http\Request
+class Route extends \Letid\Http\Request
 {
     /*
         $host: Application (folder) => hostname (regex without slashs)

@@ -1,11 +1,10 @@
 <?php
 namespace App\Pages;
-use App;
 use Letid\Request\Database;
 // use Letid\Request\Validate;
 use Letid\Request\Form;
 // use Letid\Request\Timer;
-class user extends App\Page
+class user extends \App\Page
 {
     public function __construct()
     {

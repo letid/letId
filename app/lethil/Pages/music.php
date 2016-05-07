@@ -1,7 +1,6 @@
 <?php
 namespace App\Pages;
-use App;
-class music extends App\Page
+class music extends \App\Page
 {
     public function __construct()
     {

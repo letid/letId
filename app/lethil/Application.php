@@ -1,7 +1,6 @@
 <?php
 namespace App;
-use Letid\Http;
-class Application extends Http\Request
+class Application extends \Letid\Http\Request
 {
     protected $page = array(
         'home'=>array(
@@ -106,35 +105,6 @@ class Application extends Http\Request
             )
         )
     );
-    /*
-    protected $page = array(
-        'login'=>array(
-            'Class'=>'login',
-            'Method'=>'login',
-            'Menu'=>'Login',
-            'Type'=>'user', // Navi, Navigator boolval(disable:false/true), string(enable:type), default:page
-            'Auth'=>array('age'=>18) // Auth, Authority, Authorization
-        ),
-        'music'=>array(
-            'Class'=>'music',
-            'album'=>array(
-                'Method'=>'album',
-                'title'=>array(
-                    'Method'=>'title',
-                    'sort'=>array(
-                        'Method'=>'sort',
-                    )
-                ),
-                'name'=>array(
-                    'Method'=>'name',
-                )
-            ),
-            'artist'=>array(
-                'Method'=>'artist'
-            )
-        )
-    );
-    */
     protected $config = array(
         'version'=>'1.0.9.1'
     );

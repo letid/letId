@@ -1,7 +1,6 @@
 <?php
 namespace App;
-use Letid\Http;
-abstract class Page extends Http\Response
+abstract class Page extends \Letid\Http\Response
 {
     public function __construct()
     {
