@@ -5,7 +5,7 @@ class Route extends \Letid\Http\Request
     /*
         $host: Application (folder) => hostname (regex without slashs)
     */
-    protected $host = array(
+    protected $terminal = array(
         'lethil'=>"lethil.localhost",
         'localhost'=>"localhost",
         'example'=>array(
@@ -14,12 +14,12 @@ class Route extends \Letid\Http\Request
         'storage-example'=>"storage.example",
         'storage'=>array()
     );
-    protected $dir = array(
+    protected $directory = array(
 		'template'=>'template',
 		'language'=>'language'
 	);
-    protected $config = array(
-        'language_default'=>'en'
+    protected $configuration = array(
+        'language'=>'en'
     );
     /*
         ANS: the Application's Namespace, this can not be modified!
