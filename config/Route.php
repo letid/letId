@@ -3,7 +3,7 @@ namespace App;
 class Route extends \Letid\Http\Request
 {
     /*
-        $host: Application (folder) => hostname (regex without slashs)
+        Application (folder) => hostname (regex without slashs)
     */
     protected $terminal = array(
         'lethil'=>"lethil.localhost",
