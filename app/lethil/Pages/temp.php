@@ -1,5 +1,5 @@
 <?php
-namespace App\Pages;
+// namespace App\Pages;
 class temp extends \App\Page
 {
     public function __construct()

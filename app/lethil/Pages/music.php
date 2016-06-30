@@ -7,7 +7,8 @@ class music extends \App\Page
         /*
         constructor
         */
-        $this->menu();
+        Service\Application::menu()->page();
+        Service\Application::menu()->language();
     }
     public function home()
     {

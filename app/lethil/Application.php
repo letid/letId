@@ -1,8 +1,8 @@
 <?php
 namespace App;
-class Application extends \Letid\Http\Request
+class Application
 {
-    protected $page = array(
+    public $page = array(
         'home'=>array(
             'Class'=>'home',
             'Method'=>'home',
@@ -20,92 +20,80 @@ class Application extends \Letid\Http\Request
         	'Method'=>'privacy',
         	'Menu'=>'Privacy'
         ),
-        'redirect'=>array(
-            'Menu'=>'Redirect',
-            'Link'=>'http://www.google.com',
-            'Type'=>false
-        ),
-        'login'=>array(
-            'Class'=>'user',
-            'Method'=>'login',
-            'Menu'=>'Login',
+        'signin'=>array(
+            'Class'=>'sign',
+            'Method'=>'signin',
+            'Menu'=>'Signin',
             'Type'=>'user',
-            'Auth'=>array('age'=>12)
+            'Auth'=>'guest'
+        ),
+        'signup'=>array(
+            'Class'=>'sign',
+            'Method'=>'signup',
+            'Menu'=>'Signup',
+            'Type'=>'user',
+            'Auth'=>'guest'
         ),
         'forgot-password'=>array(
-            'Class'=>'user',
+            'Class'=>'sign',
             'Method'=>'forgotPassword',
             'Menu'=>'Forgot password',
-            'Type'=>'user'
+            'Type'=>'user',
+            'Auth'=>'guest'
         ),
-        'register'=>array(
-            'Class'=>'user',
-            'Method'=>'register',
-            'Menu'=>'Register',
-            'Type'=>'user'
+        'reset-password'=>array(
+            'Class'=>'sign',
+            'Method'=>'resetPassword',
+            'Menu'=>'Reset password',
+            'Type'=>'user',
+            'Auth'=>'guest'
         ),
-        'music'=>array(
-            'Class'=>'music',
-            'Auth'=>array('age'=>30),
-            'album'=>array(
-                'Method'=>'album'
+        'auth'=>array(
+            'Class'=>'sign',
+            // 'Method'=>'home',
+            // 'Menu'=>array(),
+            'Menu'=>'display.name',
+            'Type'=>'user',
+            'Auth'=>array(
+                'user'
             ),
-            'artist'=>array(
-                'Method'=>'artist'
+            'update'=>array(
+                'Method'=>'update',
+                'Menu'=>'Update'
+            ),
+            'update?cheml'=>array(
+                'Method'=>'update',
+                'Menu'=>'Change email'
+            ),
+            'update?chpwd'=>array(
+                'Method'=>'update',
+                'Menu'=>'Change password'
+            ),
+            'update?chdis'=>array(
+                'Method'=>'update',
+                'Menu'=>'Change displayname'
+            ),
+            'signout'=>array(
+                'Menu'=>'Signout',
+                'Method'=>'signout',
+                'Link'=>'?signout'
             )
         ),
-        'music9'=>array(
-            'Class'=>'music',
-            'Auth'=>array('age'=>9),
-            'album'=>array(
-                'Method'=>'album'
-            ),
-            'artist'=>array(
-                'Method'=>'artist'
-            )
-        ),
-        'music8'=>array(
-            'Class'=>'music',
-            'Auth'=>array('age'=>8),
-            'album'=>array(
-                'Method'=>'album'
-            ),
-            'artist'=>array(
-                'Method'=>'artist'
-            )
-        ),
-        'music3'=>array(
-            'Class'=>'music',
-            'Auth'=>array('age'=>30),
-            'album'=>array(
-                'Method'=>'album'
-            ),
-            'artist'=>array(
-                'Method'=>'artist'
-            )
-        ),
-        'music4'=>array(
-            'Class'=>'music',
-            'Auth'=>array('age'=>30),
-            'album'=>array(
-                'Method'=>'album'
-            ),
-            'artist'=>array(
-                'Method'=>'artist'
-            )
-        ),
-        'music5'=>array(
-            'Class'=>'music',
-            'Auth'=>array('age'=>30),
-            'album'=>array(
-                'Method'=>'album'
-            ),
-            'artist'=>array(
-                'Method'=>'artist'
-            )
-        )
+        // 'signout'=>array(
+        //     'Menu'=>'Signout',
+        //     'Method'=>'signout',
+        //     'Link'=>'?signout',
+        //     'Type'=>'user',
+        //     'Auth'=>array(
+        //         'user'
+        //     )
+        // )
     );
-    protected $config = array(
-        'version'=>'1.0.9.1'
+    // public $directory = array(
+    //     'love'=>'abc'
+    // );
+    public $configuration = array(
+        'version'=>'1.1.0.1',
+        'previousHits'=>0,
     );
 }

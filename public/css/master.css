@@ -19,3 +19,6 @@ html, body {
 li.active > a {
     color: red;
 }
+form {
+    border: 1px solid #ccc; margin: 5px; 
+}

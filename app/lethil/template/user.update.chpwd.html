@@ -1,0 +1,18 @@
+<form method="POST" action="?chpwd">
+    <h2>{Change password}</h2>
+    <div class="{chpwd_class_password}">
+        <span>{Password}</span>
+        <input type="password" size="26" name="password" value="{chpwd_value_password}">
+        <em>{chpwd_mask_password}</em>
+    </div>
+    <div class="{chpwd_class_newpassword}">
+        <span>{New password}</span>
+        <input type="password" size="26" name="newpassword" value="{chpwd_value_newpassword}">
+        <em>{chpwd_mask_newpassword}</em>
+    </div>
+
+    <div class="submit">
+        <input type="submit" name="chpwd" value="{Change}">
+    </div>
+    {chpwd_form_message}
+</form>

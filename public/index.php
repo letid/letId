@@ -1,21 +1,21 @@
 <?php
-/*
-Default document
+/**
+* Default document
 */
 require __DIR__.'/..'.$_SERVER['PHP_SELF'];
-/*
-    Initiate HTTP_HOST, REQUEST_URI according to the Application's Routine!
+/**
+* Initiate HTTP_HOST, REQUEST_URI according to the Application's Routine!
 */
 $Application = new App\Route;
-/*
-    Request: Http
+/**
+* Request: Http
 */
 $Application->Request();
-/*
-    Initiate: Configuration
+/**
+* Initiate: Configuration
 */
 $Application->Initiate();
-/*
-    Response: Html
+/**
+* Response: Html
 */
 $Application->Response();

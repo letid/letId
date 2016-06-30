@@ -1,11 +1,12 @@
 <?php
 namespace App;
 class Route extends \Letid\Http\Request
+// class Route extends \letId\httpRequest
 {
-    /*
-        Application (folder) => hostname (regex without slashs)
+    /**
+    * NOTE: application (folder) => hostname (regex without slashs)
     */
-    protected $terminal = array(
+    protected $application = array(
         'lethil'=>"lethil.localhost",
         'localhost'=>"localhost",
         'example'=>array(
@@ -14,19 +15,23 @@ class Route extends \Letid\Http\Request
         'storage-example'=>"storage.example",
         'storage'=>array()
     );
-    protected $directory = array(
-		'template'=>'template',
-		'language'=>'language'
-	);
-    protected $configuration = array(
-        'language'=>'en'
-    );
-    /*
-        ANS: the Application's Namespace, this can not be modified!
+    /**
+    * NOTE: custom configuration is okey!
+    */
+    // protected $root = '../app/';
+    // protected $directory = array(
+	// 	'template'=>'template',
+	// 	'language'=>'language'
+	// );
+    // protected $configuration = array(
+    //     'language'=>'en'
+    // );
+    /**
+    * NOTE: the Application's Namespace, ANS can not be modified!
     */
     const ANS = __NAMESPACE__;
-    /*
-        ADR: the Application's Directory, this can not be modified! Not in used (at the moment)!
+    /**
+    * NOTE: the Application's Directory, ADR can not be modified! Not in used (at the moment)!
     */
     const ADR = __DIR__;
 }

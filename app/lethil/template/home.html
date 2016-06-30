@@ -3,15 +3,16 @@
     <div>{menu_user}</div>
 </header>
 <div>
-    <h1>H1 {Heading}</h1>
+    <h1>{Heading}</h1>
+        {home.loop}
       <p>{Description}</p>
       <ul>
           {home.li}
       </ul>
-      {home.loop}
 </div>
 <footer>
-    {pageFooter} - {timer_finish}
+    {menu_language}
+    {pageFooter} - {timer_finish} {visitor.total}/{visitor.hits} - 
 </footer>
 {error_get_last}
 {Test_Template}

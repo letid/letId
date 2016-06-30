@@ -1,0 +1,34 @@
+<header>
+    <div>{menu_page}</div>
+    <div>{menu_user}</div>
+</header>
+<div>
+    <div class="sign">
+        <form method="POST">
+            <h2>{Signup}</h2>
+            <div class="{signup_class_email}">
+                <span>{Email}</span>
+                <input type="text" size="26" name="email" value="{signup_value_email}">
+                <em>{signup_mask_email}</em>
+            </div>
+            <div class="{signup_class_password}">
+                <span>{Password}</span>
+                <input type="password" size="26" name="password" value="{signup_value_password}">
+                <em>{signup_mask_password}</em>
+            </div>
+            <div class="{signup_class_displayname}">
+                <span>{Display name}</span>
+                <input type="text" size="26" name="displayname" value="{signup_value_displayname}">
+                <em>{signup_mask_displayname}</em>
+            </div>
+            <div class="submit">
+                <input type="submit" name="signup" value="{Signup}">
+            </div>
+            {signup_form_message}
+        </form>
+    </div>
+</div>
+<footer>
+    {pageFooter} - {timer_finish}
+</footer>
+{error_get_last}

@@ -1,0 +1,32 @@
+<header>
+    <div>{menu_page}</div>
+    <div>{menu_user}</div>
+</header>
+<div>
+    <div class="sign">
+        <form method="POST">
+            <h2>{Signin}</h2>
+            <div class="{signin_class_username}">
+                <span>{Email}</span>
+                <input type="text" size="26" name="email" value="{signin_value_email}">
+                <em>{signin_mask_email}</em>
+            </div>
+            <div class="{signin_class_password}">
+                <span>{Password}</span>
+                <input type="password" size="26" name="password" value="{signin_value_password}">
+                <em>{signin_mask_password}</em
+            </div>
+            <div class="submit">
+                <input type="submit" name="signin" value="{Signin}">
+            </div>
+            {signin_form_message}
+        </form>
+    </div>
+</div>
+<footer>
+    {pageFooter}
+    '''
+    {forgot-password}
+    ''
+    <a href="/forgot-password">testing </a>
+</footer>
