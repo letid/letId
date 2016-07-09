@@ -1,76 +1,26 @@
 <?php
-namespace App\Pages;
-use Letid\Service;
-class sign extends \App\Page
+namespace app\map;
+use app;
+class sign extends mapController
 {
+    public $signup_table = 'users';
     public function __construct()
     {
-        Service\Application::menu()->page();
-        Service\Application::menu()->language();
-        Service\Application::assist()->error_get_last();
-        $this->signup_table ='users';
+        $this->timer = app\avail::timer();
     }
-    public function _delete_or_try() {
-        Service\Application::menu()->page();
-        Service\Application::menu()->language();
-        Service\Application::assist()->error_get_last();
-        // Service\Application::content('display.name')->set('kkkkkkkkk');
+    public function homeConcluded()
+    {
+    }
+    public function classConcluded()
+    {
+        app\verso::nav()->request();
+        app\verse::nav()->request();
+        app\log::hits()->counter();
+        app\avail::assist()->error_get_last();
+        $this->timerfinish = $this->timer->finish();
     }
     public function home()
     {
-        // return 'home';
-        /*
-        lessist
-
-        <div class="info">
-            <h4>Info</h4>
-            <ul>
-                <li class="name">Username <span>khensolomon@gmail.com</span></li>
-                <li class="log">Log <span>664</span> --- {testing}</li>
-                <li class="role">Role <span>7</span></li>
-                <li class="dreg">Registered since <span>2010-01-01 21:56:26</span></li>
-                <li class="dlog">Last login <span>2016-06-25 07:02:53</span></li>
-            </ul>
-        </div>
-        Application::html(Id)->response(Text,Attr);
-        Application::html(Id)->text(Text)->attr(Attr)->response(Text,Attr);
-        */
-        // $this->testing = 'love';
-        // print_r(Service\Application::$user);
-        // print_r($this->user);
-        // $testing = Service\Application::html('div')->text('loving')->attr(array('class'=>'info'))->response();
-        /*
-        $ul = array(
-            'div'=>array(
-                'text'=>array(
-                    'h4'=>'love',
-                    'ul'=>array(
-                        'text'=>array(
-                            array(
-                                'li'=>array(
-                                    'text' => array(
-                                        'Username', 'span'=>'khensolomon@gmail.com'
-                                    )
-                                )
-                            ),
-                            array(
-                                'li'=>array(
-                                    'text' => 'one'
-                                )
-                            )
-                        )
-                    )
-                ),
-                'attr'=>array(
-                    'class'=>'info'
-                )
-            )
-        );
-        $testing = Service\Application::html($ul);
-        // $testing = Service\Application::html($ul)->attr(array('class'=>'info'))->response();
-
-        Service\Application::content('user.home.info')->set($testing);
-        */
         return array(
             'layout'=>array(
                 'Title'=>'Account',
@@ -78,35 +28,33 @@ class sign extends \App\Page
                 'Keywords'=>'PHP framework',
                 'page.id'=>'account',
                 'page.class'=>'account',
-                'page.content'=>Service\Application::template(
-                    array(
-                        'user.home'=>array(
-                            'user.home.info'=>array(
-                                'email'=>Service\Application::$user->email,
-                                'log'=>Service\Application::$user->logs,
-                                'role'=>Service\Application::$user->role,
-                                'dreg'=>Service\Application::$user->created,
-                                'dlog'=>Service\Application::$user->modified
-                            ),
-                            'user.home.address'=>array(
-                                'home.li.one'=>'One of One'
-                            ),
-                            'user.home.contact'=>array(
-                                'home.li.one'=>'One of One'
-                            ),
-                            'user.home.profile'=>array(
-                                'home.li.one'=>'One of One'
-                            ),
-                            'user.home.update'=>array(
-                                'home.li.one'=>'One of One'
-                            ),
-                            'user.home.status'=>array(
-                                'home.li.one'=>'One of One'
-                            ),
-                            'user.home.system'=>array(
-                                'home.li.one'=>'One of One'
-                            ),
-                        )
+                'page.content'=>array(
+                    'user.home'=>array(
+                        'user.home.info'=>array(
+                            'email'=>app\avail::$user->email,
+                            'log'=>app\avail::$user->logs,
+                            'role'=>app\avail::$user->role,
+                            'dreg'=>app\avail::$user->created,
+                            'dlog'=>app\avail::$user->modified
+                        ),
+                        'user.home.address'=>array(
+                            'home.li.one'=>'One of One'
+                        ),
+                        'user.home.contact'=>array(
+                            'home.li.one'=>'One of One'
+                        ),
+                        'user.home.profile'=>array(
+                            'home.li.one'=>'One of One'
+                        ),
+                        'user.home.update'=>array(
+                            'home.li.one'=>'One of One'
+                        ),
+                        'user.home.status'=>array(
+                            'home.li.one'=>'One of One'
+                        ),
+                        'user.home.system'=>array(
+                            'home.li.one'=>'One of One'
+                        ),
                     )
                 )
             )
@@ -121,10 +69,8 @@ class sign extends \App\Page
                 'Keywords'=>'PHP framework',
                 'page.id'=>'account',
                 'page.class'=>'account',
-                'page.content'=>Service\Application::template(
-                    array(
-                        'user.update'=>$this->user_update_selected()
-                    )
+                'page.content'=>array(
+                    'user.update'=>$this->user_update_selected()
                 )
             )
         );
@@ -136,22 +82,22 @@ class sign extends \App\Page
         );
         foreach ($form as $Id => $Name) {
             $selected = isset($_GET[$Id])?'selected':$Id;
-            $update["user.update.$selected"] = Service\Application::template($Name);
+            $update["user.update.$selected"] = app\avail::template($Name);
         }
         return $update;
     }
     private function cheml()
     {
-        return Service\Form::request(
+        return app\form::name(
             'cheml'
-        )->initiate(
+        )->setting(
             array(
                 'method'=>'POST',
                 'table'=>'users',
                 'mask'=>'*',
                 'class'=>'error',
-                'message'=>'default message',
-                'setting'=>array(
+                'msg'=>'default message',
+                'row'=>array(
                     'email'=>array(
                         'require'=>array(
                             'mask'=>'Required',
@@ -167,7 +113,7 @@ class sign extends \App\Page
                         'custom'=>array(
                             'Duplicate'=>array(
                                 'task'=>array(
-                                    array('userid','!=',Service\Application::$user->userid)
+                                    array('userid','!=',app\avail::$user->userid)
                                 ),
                                 'mask'=>'!',
                                 'status'=>'E-mail already exists.'
@@ -181,21 +127,21 @@ class sign extends \App\Page
                             'status'=>'password'
                         ),
                         'custom'=>array(
-                            'Encrypt'=>array(
-                                'modify'=>true
-                            ),
                             'Exists'=>array(
                                 'task'=>array(
-                                    array('userid',Service\Application::$user->userid)
+                                    array('userid',app\avail::$user->userid)
                                 ),
                                 'mask'=>'!',
                                 'status'=>'Password is not correct.'
+                            ),
+                            'Encrypt'=>array(
+                                'modify'=>true
                             )
                         ),
                         'id'=>true
                     ),
                     'userid'=>array(
-                        'value'=>Service\Application::$user->userid,
+                        'value'=>app\avail::$user->userid,
                         'id'=>true
                     )
                 )
@@ -210,16 +156,16 @@ class sign extends \App\Page
     }
     private function chpwd()
     {
-        return Service\Form::request(
+        return app\form::name(
             'chpwd'
-        )->initiate(
+        )->setting(
             array(
                 'method'=>'POST',
                 'table'=>'users',
                 'mask'=>'*',
                 'class'=>'error',
-                'message'=>'default message',
-                'setting'=>array(
+                'msg'=>'default message',
+                'row'=>array(
                     'password'=>array(
                         'require'=>array(
                             'mask'=>'Required',
@@ -232,7 +178,7 @@ class sign extends \App\Page
                             ),
                             'Exists'=>array(
                                 'task'=>array(
-                                    array('userid',Service\Application::$user->userid)
+                                    array('userid',app\avail::$user->userid)
                                 ),
                                 'mask'=>'!',
                                 'status'=>'Password is not correct.'
@@ -253,7 +199,7 @@ class sign extends \App\Page
                         )
                     ),
                     'userid'=>array(
-                        'value'=>Service\Application::$user->userid,
+                        'value'=>app\avail::$user->userid,
                         'id'=>true
                     )
                 )
@@ -268,18 +214,18 @@ class sign extends \App\Page
     }
     private function chdis()
     {
-        return Service\Form::request(
+        return app\form::name(
             'chdis'
-        )->initiate(
+        )->setting(
             array(
                 'method'=>'POST',
                 'table'=>'users',
                 'mask'=>'*',
                 'class'=>'error',
-                'message'=>'default message',
-                'setting'=>array(
+                'msg'=>'default message',
+                'row'=>array(
                     'displayname'=>array(
-                        'value'=>Service\Application::$user->displayname,
+                        'value'=>app\avail::$user->displayname,
                         'require'=>array(
                             'mask'=>'Required',
                             'class'=>'require',
@@ -287,16 +233,19 @@ class sign extends \App\Page
                         )
                     ),
                     'userid'=>array(
-                        'value'=>Service\Application::$user->userid,
+                        'value'=>app\avail::$user->userid,
                         'id'=>true
                     )
                 )
             )
         )->update(
-            function (){
-                // Service\Application::content('kkkkkkkkk')->set('display.name');
-                Service\Application::content('display.name')->set('kkkkkkkkk');
-                return 'Ok...';
+            function ($status, $obj) {
+                if ($status) {
+                    app\avail::content('user.displayname')->set($obj->formPost['displayname']);
+                    return 'Updated';
+                } else {
+                    return 'Sorry';
+                }
             }
         )->done(
             array(
@@ -345,7 +294,7 @@ class sign extends \App\Page
         // }
         $setting = array(
             'userid'=>array(
-                'value'=>Service\Application::$user->userid,
+                'value'=>app\avail::$user->userid,
                 'id'=>true
             ),
             'firstname'=>array(
@@ -427,7 +376,7 @@ class sign extends \App\Page
             // 'gender'=>array(),
             // 'khua'=>array(),
             // 'huaipi'=>array(),
-            // 'setting'=>array(),
+            // 'row'=>array(),
             // 'data'=>array(),
             // 'temp'=>array(
             //     'require'=>array(
@@ -438,7 +387,7 @@ class sign extends \App\Page
             // )
         );
 
-        // $db = Service\Application::$database->select()->from('users_desc')->where('userid',Service\Application::$user->userid)->execute()->toArray();
+        // $db = app\avail::$database->select()->from('users_desc')->where('userid',app\avail::$user->userid)->execute()->toArray();
         // // print_r($db);
         // if ($db->rows) {
         //     // print_r($db->rows);
@@ -449,18 +398,17 @@ class sign extends \App\Page
         //
         //     }
         // }
-        return Service\Form::request(
+        return app\form::name(
             'chpro'
-        )->initiate(
+        )->setting(
             array(
                 'method'=>'POST',
                 'table'=>'users_desc',
                 'mask'=>'*',
                 'class'=>'error',
-                'message'=>'default message',
-                'setting'=>$setting,
-                'settingValue'=>array('userid',Service\Application::$user->userid)
-                // 'settingValue'=>$db->rows[0]
+                'msg'=>'default message',
+                'row'=>$setting,
+                'val'=>array('userid',app\avail::$user->userid)
             )
         )->insertOrupdate(
         )->done(
@@ -472,32 +420,16 @@ class sign extends \App\Page
     }
     public function signup()
     {
-        // Service\Application::assist()->error_get_last();
-        return Service\Form::request(
+        return app\form::name(
             'signup'
-        )->initiate(
+        )->setting(
             array(
                 'method'=>'POST',
                 'table'=>'users',
                 'mask'=>'*',
                 'class'=>'error',
-                'message'=>'default message',
-                'setting'=>array(
-                    // 'username'=>array(
-                    //     'value'=>'default Username',
-                    //     'require'=>array(
-                    //         'mask'=>'Required',
-                    //         'class'=>'require',
-                    //         'status'=>'Username'
-                    //     ),
-                    //     'custom'=>array(
-                    //         'Duplicate'=>array(
-                    //             // 'task'=>array('a','b','c'),
-                    //             'mask'=>'!',
-                    //             'status'=>'Username already exists.'
-                    //         )
-                    //     )
-                    // ),
+                'msg'=>'default message',
+                'row'=>array(
                     'email'=>array(
                         'value'=>'defaults@email.com',
                         'require'=>array(
@@ -507,30 +439,12 @@ class sign extends \App\Page
                         ),
                         'validate'=>array(
                             'filter'=>FILTER_VALIDATE_EMAIL,
-                            // 'task'=>FILTER_FLAG_PATH_REQUIRED,
-                            // 'task'=>array(
-                            //     'flags' => FILTER_NULL_ON_FAILURE
-                            // ),
-                            // 'task'=>array(
-                            //     'flags'=>FILTER_FLAG_ALLOW_OCTAL
-                            //     'options' => array(
-                            //         'default' => 3,
-                            //         'min_range' => 0
-                            //     )
-                            // ),
                             'mask'=>'Invalid',
                             'class'=>'invalid',
                             'status'=>'a valid E-mail'
                         ),
                         'custom'=>array(
                             'Duplicate'=>array(
-                                // 'task'=>'existsCheck',
-                                // 'task'=>function($q){
-                                //     return array('userid','!=',Service\Application::$user->userid);
-                                // },
-                                // 'task'=>array(
-                                //     array('userid','!=',Service\Application::$user->userid)
-                                // ),
                                 'mask'=>'!',
                                 'status'=>'E-mail already exists.'
                             )
@@ -565,8 +479,7 @@ class sign extends \App\Page
                 )
             )
         )->signup(
-        )->redirectIfsuccess(
-            '/'
+        )->redirectOnsuccess(
         )->done(
             array(
                 'layout'=>array(
@@ -575,10 +488,8 @@ class sign extends \App\Page
                     'Keywords'=>'PHP framework',
                     'page.id'=>'signup',
                     'page.class'=>'signup',
-                    'page.content'=>Service\Application::template(
-                        array(
-                            'user.signup'=>array()
-                        )
+                    'page.content'=>array(
+                        'user.signup'=>array()
                     )
                 )
             )
@@ -586,40 +497,18 @@ class sign extends \App\Page
     }
     public function signin()
     {
-        /*
-        $rowsArray = array(
-            'userid'=>1,
-            'logs'=>2,
-            'password'=>3
-        );
-        $rowsFun = array(
-            'userid'=>'default',
-            'logs'=>function($log2,$log){
-                return $logs2 + 1;
-            }
-        );
-        // $signCookieValue = array_intersect_key($rowsArray, $rowsFun);
-        // $signCookieValue = array_intersect_ukey($rowsArray, $rowsFun);
-        // $signCookieValue = array_intersect_uassoc($rowsArray, $rowsFun);
-        $signCookieValue = array_intersect_uassoc($rowsArray, $rowsFun,function($k,$v){
-            return $v;
-        },function($k,$v){
-            return $v;
-        });
-        print_r($signCookieValue);
-        // $signCookieValue = array_intersect_key($rowsArray, array_flip(array('userid','password')));
-        */
-        return Service\Form::request(
+        return app\form::name(
             'signin'
-        )->initiate(
+        )->setting(
             array(
                 'method'=>'POST',
                 'table'=>'users',
                 'mask'=>'*',
                 'class'=>'error',
-                'message'=>'default message',
-                'setting'=>array(
+                'msg'=>'enable many options and let you manage later using any computer.',
+                'row'=>array(
                     'email'=>array(
+                        'value'=>'abc@email.com',
                         'require'=>array(
                             'mask'=>'Required',
                             'class'=>'require',
@@ -632,15 +521,8 @@ class sign extends \App\Page
                             'status'=>'a valid E-mail'
                         )
                     ),
-                    // 'gender'=>array(
-                    //     'value'=>array('Male','Female'),
-                    //     'require'=>array(
-                    //         'mask'=>'Required',
-                    //         'class'=>'require',
-                    //         'status'=>'Gender'
-                    //     )
-                    // ),
                     'password'=>array(
+                        'value'=>'test',
                         'require'=>array(
                             'mask'=>'Required',
                             'class'=>'require',
@@ -655,8 +537,7 @@ class sign extends \App\Page
                 )
             )
         )->signin(
-        )->redirectIfsuccess(
-            '/'
+        )->redirectOnsuccess(
         )->done(
             array(
                 'layout'=>array(
@@ -665,43 +546,28 @@ class sign extends \App\Page
                     'Title'=>'Signin',
                     'Description'=>'Signin',
                     'Keywords'=>'PHP framework',
-                    'page.content'=>Service\Application::template(
-                        array(
-                            'user.signin'=>array(
-                                // 'forgot-password'=>Service\Application::assist('forgot-password')->link('Forgot password'),
-                                // 'forgotpassword'=>'forgotpassword testing',
-                            )
-                        )
+                    'page.content'=>array(
+                        'user.signin'=>array()
                     )
                 )
             )
         );
-        // Application::assist()->link();
-        // Application::assist('forgotpassword')->link();
     }
     public function signout()
     {
-        // TODO: to be continued
-        // Cookie::sign()->out();
-        // return Form::request(
-        //     'signout'
-        // )->signout(
-        // )->redirectIfsuccess(
-        //     '/'
-        // );
     }
     public function forgotPassword()
     {
-        return Service\Form::request(
+        return app\form::name(
             'forgotpassword'
-        )->initiate(
+        )->setting(
             array(
                 'method'=>'POST',
                 'table'=>'users',
                 'mask'=>'*',
                 'class'=>'error',
-                'message'=>'default message',
-                'setting'=>array(
+                'msg'=>'It happens to everyone... Enter your Username and E-mail, we will send you a new password!',
+                'row'=>array(
                     'email'=>array(
                         'value'=>'abc@email.com',
                         'require'=>array(
@@ -719,7 +585,8 @@ class sign extends \App\Page
                 )
             )
         )->forgotpassword(
-        )->redirectIfsuccess( '/reset-password'
+        )->redirectOnsuccess(
+            '/reset-password'
         )->done(
             array(
                 'layout'=>array(
@@ -728,10 +595,8 @@ class sign extends \App\Page
                     'Title'=>'Forgot password',
                     'Description'=>'Forgot password',
                     'Keywords'=>'PHP framework',
-                    'page.content'=>Service\Application::template(
-                        array(
-                            'user.forgot.password'=>array()
-                        )
+                    'page.content'=>array(
+                        'user.forgot.password'=>array()
                     )
                 )
             )
@@ -739,16 +604,16 @@ class sign extends \App\Page
     }
     public function resetPassword()
     {
-        return Service\Form::request(
+        return app\form::name(
             'resetpassword'
-        )->initiate(
+        )->setting(
             array(
                 'method'=>'POST',
                 'table'=>'users',
                 'mask'=>'*',
                 'class'=>'error',
-                'message'=>'default message',
-                'setting'=>array(
+                'msg'=>'default message',
+                'row'=>array(
                     'code'=>array(
                         // 'value'=>$_GET['code'],
                         'require'=>array(
@@ -772,7 +637,8 @@ class sign extends \App\Page
                 )
             )
         )->resetpassword(
-        )->redirectIfsuccess( '/signin'
+        )->redirectOnsuccess(
+            '/signin'
         )->done(
             array(
                 'layout'=>array(
@@ -781,10 +647,8 @@ class sign extends \App\Page
                     'Title'=>'Reset password',
                     'Description'=>'Reset password',
                     'Keywords'=>'PHP framework',
-                    'page.content'=>Service\Application::template(
-                        array(
-                            'user.reset.password'=>array()
-                        )
+                    'page.content'=>array(
+                        'user.reset.password'=>array()
                     )
                 )
             )

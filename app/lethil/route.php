@@ -1,6 +1,6 @@
 <?php
-namespace App;
-class Application
+namespace app;
+class route
 {
     public $page = array(
         'home'=>array(
@@ -19,6 +19,24 @@ class Application
         'privacy'=>array(
         	'Method'=>'privacy',
         	'Menu'=>'Privacy'
+        ),
+        'form'=>array(
+            'Class'=>'form',
+            // 'Method'=>'home',
+            // 'Menu'=>array(),
+            'Menu'=>'Form',
+            'update'=>array(
+                'Method'=>'update',
+                'Menu'=>'Update'
+            )
+        ),
+        'api'=>array(
+            'Class'=>'api',
+            'Menu'=>'API',
+            'json'=>array(
+                'Method'=>'json',
+                'Menu'=>'JSON'
+            )
         ),
         'signin'=>array(
             'Class'=>'sign',
@@ -48,11 +66,21 @@ class Application
             'Type'=>'user',
             'Auth'=>'guest'
         ),
+        'auth-test'=>array(
+            // 'Class'=>'home',
+            // 'Method'=>'home',
+            // 'Menu'=>array(),
+            'Menu'=>'user.displayname',
+            'Auth'=>array(
+                'user',
+                'age'=>10
+            )
+        ),
         'auth'=>array(
             'Class'=>'sign',
             // 'Method'=>'home',
             // 'Menu'=>array(),
-            'Menu'=>'display.name',
+            'Menu'=>'user.displayname',
             'Type'=>'user',
             'Auth'=>array(
                 'user'
@@ -93,7 +121,6 @@ class Application
     //     'love'=>'abc'
     // );
     public $configuration = array(
-        'version'=>'1.1.0.1',
-        'previousHits'=>0,
+        'version'=>'1.1.2'
     );
 }

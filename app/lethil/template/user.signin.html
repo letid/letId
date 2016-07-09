@@ -1,32 +1,30 @@
 <header>
-    <div>{menu_page}</div>
-    <div>{menu_user}</div>
+    <div>{menu.page}</div>
+    <div>{menu.user}</div>
 </header>
 <div>
     <div class="sign">
         <form method="POST">
             <h2>{Signin}</h2>
-            <div class="{signin_class_username}">
+            <div class="{signin.class.email}">
                 <span>{Email}</span>
-                <input type="text" size="26" name="email" value="{signin_value_email}">
-                <em>{signin_mask_email}</em>
+                <input type="text" size="26" name="email" value="{signin.value.email}">
+                <em>{signin.mask.email}</em>
             </div>
-            <div class="{signin_class_password}">
+            <div class="{signin.class.password}">
                 <span>{Password}</span>
-                <input type="password" size="26" name="password" value="{signin_value_password}">
-                <em>{signin_mask_password}</em
+                <input type="password" size="26" name="password" value="{signin.value.password}">
+                <em>{signin.mask.password}</em>
             </div>
             <div class="submit">
                 <input type="submit" name="signin" value="{Signin}">
             </div>
-            {signin_form_message}
+            {signin.form.message}
         </form>
     </div>
 </div>
 <footer>
-    {pageFooter}
-    '''
-    {forgot-password}
-    ''
-    <a href="/forgot-password">testing </a>
+    {menu.language}
+    {pageFooter} - {timer.finish} {visitor.total}/{visitor.hits} -
 </footer>
+{error.get.last}

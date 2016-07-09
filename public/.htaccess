@@ -5,6 +5,14 @@
 
     RewriteEngine On
 
+    # Advance, based on Subdomain Name
+    RewriteCond %{THE_REQUEST} ^GET\ /src/
+    RewriteCond %{HTTP_HOST} !^www
+    RewriteCond %{HTTP_HOST} ^([^\.]+)\.([^\.]+)\.([^\.]+)$
+    RewriteRule ^src/(.*)$ ../app/%1/resource/$1
+    RewriteCond %{HTTP_HOST} ^(?:www\.)?([^\.]+)\.([^\.]+)$
+    RewriteRule ^src/(.*)$ ../app/%1/resource/$1
+
     # Redirect Trailing Slashes If Not A Folder...
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteRule ^(.*)/$ /$1 [L,R=301]

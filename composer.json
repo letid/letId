@@ -38,7 +38,7 @@
     },
     "autoload": {
         "psr-0": {
-            "App": "config/"
+            "app": "config/"
         },
         "psr-4": {},
         "classmap": [],
@@ -47,7 +47,7 @@
     "autoload-dev": {
         "psr-0": {},
         "psr-4": {
-            "Letid\\": "src/framework/"
+            "letId\\": "src/framework/"
         },
         "classmap": [],
         "files": []

@@ -1,5 +1,5 @@
 <?php
-namespace App;
-class Configuration
+namespace app;
+class configuration
 {
 }

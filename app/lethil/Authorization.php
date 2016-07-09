@@ -1,47 +1,48 @@
 <?php
-namespace App;
-class Authorization extends \Letid\Http\Initiate
+namespace app;
+class authorization extends \letId\support\authorization
 {
-    /*
-    Since we used isset($this->user), user property can not defined by default
-    */
     public $table = array(
         'user' => 'users'
     );
+    public function test()
+    {
+        echo 'app\authorization::test';
+    }
     public function age($v)
 	{
-        // print_r($database::select('id')->from('love')->build()->query);
-        // print_r(self::select('id')->from('love')->build()->query);
-        // print_r(self::database()::select('id')->from('love')->build()->query);
-        // print_r(\Letid\Database\Request::select('id')->from('love')->build()->query);
-        // print_r($this->db->select('id')->from('love')->build()->query);
-        // print_r($this);
-        // print_r($this->UserInfo());
+        if ($v >= 10) {
+            return true;
+        }
+	}
+    public function user()
+	{
+        return self::$user;
+	}
+    public function confirm_user()
+	{
+        return self::$user;
+	}
+    public function confirm_guest()
+	{
+        return !self::$user;
+	}
+    public function confirm_age()
+	{
         if ($v >= 10) return true;
 	}
-    public function user($a)
+    public function confirm_email()
 	{
-        if (isset($this->user)) {
-            return true;
-        }
+        if ($v >= 10) return true;
 	}
-    public function user_email()
-	{
-        if (isset($this->user)) {
-            return $this->user->email;
-        }
-	}
+    // public function user_email()
+	// {
+    //     if ($this->user()) {
+    //         return self::$user->email;
+    //     }
+	// }
     public function guest()
 	{
-        if (!isset($this->user)) {
-            // echo isset($this->user).'-yes';
-            return true;
-        }
-        // return !$this->user;
+        return !self::$user;
 	}
-    // public function ages($v)
-	// {
-    //     if ($v >= 10) return true;
-	// }
-    // Database::select('id')->from($this->formTable)->where($name,$value)->execute()->rowsCount()->rowsCount;
 }
