@@ -47,7 +47,7 @@
     "autoload-dev": {
         "psr-0": {},
         "psr-4": {
-            "letId\\": "src/framework/"
+            "letId\\": "src/framework/src/"
         },
         "classmap": [],
         "files": []

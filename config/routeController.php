@@ -6,18 +6,20 @@ class routeController extends \letId\support\http
     * NOTE: application (folder) => hostname (regex without slashs)
     */
     protected $application = array(
-        'lethil'=>"lethil.localhost",
-        // 'localhost'=>"localhost",
+        // 'lethil'=>'lethil.localhost',
+        // 'localhost'=>'localhost',
         // 'example'=>array(
-        //     "example.com",".example.com",".example."
+        //     'example.com','.example.com','.example.'
         // ),
-        // 'storage-example'=>"storage.example",
-        // 'storage'=>array()
+        'lethil'=>''
     );
     protected $rewrite = array(
         'src'=>'resource'
     );
-    // protected $directory = array();
+    protected $directory = array(
+        'template'=>'template',
+        'language'=>'language'
+    );
     protected $configuration = array(
         /**
         * NOTE: application's Root
