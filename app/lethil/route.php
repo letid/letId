@@ -117,10 +117,4 @@ class route
         //     )
         // )
     );
-    // public $directory = array(
-    //     'love'=>'abc'
-    // );
-    public $configuration = array(
-        'version'=>'1.1.2'
-    );
 }

@@ -1,5 +1,7 @@
 <?php
-namespace app;
-class database
+namespace app
 {
+    class database
+    {
+    }
 }

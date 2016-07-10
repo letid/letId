@@ -3,43 +3,35 @@ namespace app;
 class routeController extends \letId\support\http
 {
     /**
-    * NOTE: application (folder) => hostname (regex without slashs)
+    * application (folder) => hostname (regex without slashs)
+    * * @var array/string
     */
     protected $application = array(
         // 'lethil'=>'lethil.localhost',
-        // 'localhost'=>'localhost',
         // 'example'=>array(
         //     'example.com','.example.com','.example.'
         // ),
+        'myordbok'=>'myordbok.',
         'lethil'=>''
     );
-    protected $rewrite = array(
-        'src'=>'resource'
-    );
+    /**
+    * common directory rewrite!
+    */
+    protected $rewrite = array();
+    /**
+    * common directory
+    */
     protected $directory = array(
         'template'=>'template',
         'language'=>'language'
     );
+    /**
+    * common configuration
+    */
     protected $configuration = array(
         /**
-        * NOTE: application's Root
+        * NOTE: application's namespace, ANS can not be modified!
         */
-        'ARO' => '../app/',
-        /**
-        * NOTE: application's Root error output
-        */
-        'ARD' => 'errors/',
-        /**
-        * NOTE: application's default language
-        */
-        // 'language'=>'en',
-        /**
-        * NOTE: application's Namespace, ANS can not be modified!
-        */
-        'ANS'=>__NAMESPACE__,
-        /**
-        * NOTE: application's Directory, ADR can not be modified! Not in used (at the moment)!
-        */
-        // 'ADR'=>__DIR__
+        'ANS'=>__NAMESPACE__
     );
 }
