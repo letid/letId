@@ -1,7 +1,11 @@
+# Gulp
+`gulp --app={app.folder.name}`
+
 # Composer
 
 curl -s http://getcomposer.org/installer | php
 php -r "readfile('https://getcomposer.org/installer');" | php
+php composer.phar dump-autoload -o
 composer dump-autoload -o
 
 Installing dependencies
@@ -18,7 +22,8 @@ composer remove khensolomonlethil/lethil
 composer create-project khensolomonlethil/lethil blog
 
 composer update --lock
-php composer.phar --lock install
+php composer.phar install --lock
+php composer.phar update --lock
 
 Directory
 ---

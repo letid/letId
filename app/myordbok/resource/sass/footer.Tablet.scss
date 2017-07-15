@@ -1,0 +1,84 @@
+div{
+  &#footer{
+    ul{
+      display: table; margin: 7px 0;
+      li{
+        list-style: none; display: table-row;
+        ol{
+          display: table; margin: 0;
+          li{
+            display: table-cell; padding:3px 0px; 
+          }
+        }
+        &.lang{
+          ol{
+            li{
+              a{
+                background-color: lighten($ColorSecond,10%);
+                display: table-cell; text-transform: uppercase; color: #fff; padding: 3px 7px;
+              }
+              &:last-child{
+              }
+              &:hover, &.active{
+                a{
+                  background-color: $ColorSecond; 
+                }
+              }
+            }
+          }
+        }
+        &.served{
+          ol{
+            li{
+              span{
+                display: inline-block; color: #fff; text-shadow: #666 0px 0px 1px; position: relative;
+                &:before, &:after{
+                  position:absolute;display:block; content: " "; border:solid transparent;
+                }
+                &:first-child{
+                  background-color: lighten($ColorSecond,30%); padding: 1px 5px;
+                }
+
+                &:nth-child(2){
+                  padding:2px 6px; background-color: lighten($ColorSecond,25%);
+                  &:before{
+                    border-left-color:lighten($ColorSecond,25%);border-width:5px;right:-10px;top:6px;
+                  }
+                  &:after{
+                    border-right-color:lighten($ColorSecond,25%);border-width:5px;left:-10px;top:6px;
+                  }
+                }
+              }
+              a{
+                color:lighten(#666,10%);
+              }
+            }
+          }
+        }
+        &.copyright{
+          ol{
+            li{
+              color: #666; ertical-align: middle;
+              a{
+                color:lighten($ColorMain,5%);
+              }
+              ol{
+                li{
+                  padding:0 2px;
+                  &:before{
+                    content: '\2022'; color:lighten(#666,30%); padding-right:3px;
+                  }
+                  a{
+                    span{
+                      color:lighten(#666,10%);
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

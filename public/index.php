@@ -1,4 +1,7 @@
 <?php
+/**
+* Initiate autoload
+*/
 require __DIR__.'/..'.$_SERVER['PHP_SELF'];
 /**
 * Initiate HTTP_HOST, REQUEST_URI according to the Application's Routine!
