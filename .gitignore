@@ -2,9 +2,9 @@ composer.phar
 /vendor/
 /src/
 /tests/
-#/app/*
-#!/app/error/
-#!/app/lethil/
+/app/*
+!/app/error/
+!/app/lethil/
 /app/*/Environment.ini
 *.[A-Z0-9].*
 
