@@ -13,55 +13,63 @@ var gulp=require('gulp'),sass=require('gulp-sass'),minifyCss=require('gulp-minif
 // REQUIRE DATA
 var Package=JSON.parse(fs.readFileSync('package.json'));
 // GULP
-// var rootDevelopment=Package.config.common.development.root;
-// var rootAssets=path.join(rootDevelopment,Package.config.common.development.assets);
-// var App=Package.config.app;
 var configAssetRoot=Package.config.common.asset.root;
 var configPublicRoot=Package.config.common.public.root;
 var configDevelopmentRoot=Package.config.common.development.root;
-// var rootAssets=path.join(rootDevelopment,Package.config.common.development.assets);
 
-// var config=function() {
-//     if (Argv.app) {
-//         return Package.config.app.indexOf(Argv.app);
-//     }
-// }
-var rootAssets=path.join(configAssetRoot,Argv.app), rootAsset=path.join(rootAssets,configDevelopmentRoot);
+var dirAssets=path.join(configAssetRoot,Argv.app), rootAsset=path.join(dirAssets,configDevelopmentRoot);
+var dirDevelopments=path.join(configAssetRoot,Argv.app), rootDevelopment=path.join(dirDevelopments,configDevelopmentRoot);
 
-var rootDevelopments=path.join(configAssetRoot,Argv.app), rootDevelopment=path.join(rootDevelopments,configDevelopmentRoot);
-// var rootDevelopment='app/lethil/resource', rootAssets='app/lethil/resource';
-/*
-AssetSASS:{
-  debugInfo: true,
-  lineNumbers: false,
-  errLogToConsole: true,
-  // sourceComments: "normal",//normal, map
-  outputStyle: "compact"//compact, compressed, expanded
-},
-AssetJS:{
-  //mangle:false,
-  output:{
-    beautify: true, 
-    comments:"license"
+var style = {
+  normal:{
+    sass:{
+      debugInfo: false,
+      lineNumbers: true,
+      errLogToConsole: true,
+      outputStyle: 'nested' //compact, expanded, nested, compressed,
+    },
+    js:{
+      //mangle:false,
+      output:{
+          beautify: true,
+          comments:'license'
+      },
+      compress:false,
+      //outSourceMap: true,
+      preserveComments:'license'
+    }
   },
-  compress:true,
-  //outSourceMap: true,
-  preserveComments:"license"
-},
-*/
+  compressed:{
+    sass:{
+      debugInfo: true,
+      lineNumbers: false,
+      errLogToConsole: true,
+      outputStyle: 'compressed'
+    },
+    js:{
+      //mangle:false,
+      output:{
+          beautify: true,
+          comments:'license'
+      },
+      compress:true,
+      //outSourceMap: true,
+      preserveComments:'license'
+    }
+  },
+};
+
+var codeStyle = Argv.style;
+if (codeStyle && style[codeStyle]) {
+  codeStyle = style[codeStyle];
+} else {
+  codeStyle=style.normal;
+}
 // NOTE: SASS
 gulp.task('sass', function () {
   return gulp
     .src(path.join(rootAsset,'sass','*([^A-Z0-9-]).scss'))//!([^A-Z0-9-])
-    .pipe(sass(
-        {
-            debugInfo: true,
-            lineNumbers: true,
-            errLogToConsole: true,
-            //sourceComments: 'map',//normal, map
-            outputStyle: 'expanded'//compressed, expanded
-        }
-    ).on('error', sass.logError))
+    .pipe(sass(codeStyle.sass).on('error', sass.logError))
     .pipe(gulp.dest(path.join(rootDevelopment,'css')));
 });
 // NOTE: SCRIPT
@@ -69,16 +77,7 @@ gulp.task('script',function(){
     gulp.src(path.join(rootAsset,'javascript','*([^A-Z0-9-]).js'))
     //.pipe(concat('all.min.js'))
     .pipe(include().on('error', console.log))
-    .pipe(uglify({
-        //mangle:false,
-        output:{
-            beautify: true,
-            comments:'license'
-        },
-        compress:false,
-        //outSourceMap: true,
-        preserveComments:'license'
-    }).on('error', console.log))
+    .pipe(uglify(codeStyle.js).on('error', console.log))
     .pipe(gulp.dest(path.join(rootDevelopment,'js')));
 });
 // NOTE: WATCH

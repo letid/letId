@@ -39,7 +39,7 @@ class routeController extends \letId\request\http
   * NOTE: application's namespace, ANS can not be modified!
   */
   protected $configuration = array(
-    'storage.root'=>'D:/STORAGE/',
+    // 'storage.root'=>'D:/STORAGE',
     // Ini file
     // 'environment'=>'environment',
     'ANS'=>__NAMESPACE__

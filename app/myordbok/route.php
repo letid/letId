@@ -10,9 +10,19 @@ class route
       'Menu'=>'Home'
     ),
     array(
-      'Page'=>'myordbok',
-      'Method'=>'aboutUs',
-      'Menu'=>'MyOrdbok'
+      'Page'=>'about',
+      'Method'=>'about',
+      'Menu'=>'About'
+    ),
+    array(
+      'Class'=>'fonts',
+      'Page'=>'myanmar-fonts',
+      'Menu'=>'Fonts'
+    ),
+    array(
+      'Class'=>'grammar',
+      'Page'=>'grammar',
+      'Menu'=>'Grammar'
     ),
     // NOTE: api
     array(
@@ -21,24 +31,36 @@ class route
       'Menu'=>'API',
       // 'Type'=>'api',
       array(
+        'Page'=>'dictionary',
+        'Method'=>'dictionary'
+      ),
+      array(
+        'Page'=>'nume',
+        'Method'=>'nume'
+      ),
+      array(
+        'Page'=>'nune',
+        'Method'=>'nune'
+      ),
+      array(
         'Page'=>'suggestion',
-        'Method'=>'suggestion',
-        // 'Menu'=>'Suggestion'
+        'Method'=>'suggestion'
       ),
       array(
         'Page'=>'definition',
-        'Method'=>'definition',
-        // 'Menu'=>'Definition'
+        'Method'=>'definition'
       ),
       array(
         'Page'=>'speech',
-        'Method'=>'speech',
-        // 'Menu'=>'Speech'
+        'Method'=>'speech'
       ),
       array(
         'Page'=>'translate',
-        'Method'=>'translate',
-        // 'Menu'=>'Translate'
+        'Method'=>'translate'
+      ),
+      array(
+        'Page'=>'post',
+        'Method'=>'post'
       )
     ),
     // NOTE: dictionary

@@ -1,17 +1,15 @@
 <div id="header" class="portal">
     <div class="resize">
-        <div class="wrapper">
-            <div class="column right">
+        <div class="row">
+            <div class="column">
                 {menu.dictionary}
             </div>
-            <div class="column left">
+            <div class="column wide">
                 <form name="search" method="get" action="/definition">
                     <p>
                         <input type="search" name="q" value="{q}" title="Type word to find it's definition">
                     </p>
                     <p>
-                        <!-- <input type="button" title="Search" value="&#xe83d;" name="search">
-                        <input type="button" title="Search" value="&#xe83d;" name="search"> -->
                         <button type="submit" id="search">&#xe83d;</button>
                     </p>
                     <div id="suggest"></div>

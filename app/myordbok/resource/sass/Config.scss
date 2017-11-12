@@ -8,6 +8,11 @@ $ColorSecond:#7A7A7A;
 $WidthMobile:500px;
 $WidthTablet:820px;
 $WidthDesktop:1210px;
+
+$media-mobile: "(min-width:150px) and (max-width:641px)";
+$media-tablet: "(min-width:641px) and (max-width:961px)";
+$media-desktop: "(min-width:961px)";
+
 @mixin text-size-adjust($value: none) {
     -webkit-text-size-adjust: $value;
     -moz-text-size-adjust: $value;
@@ -43,6 +48,18 @@ $WidthDesktop:1210px;
     ::-webkit-scrollbar-thumb { background-color:#{$color};border-top-left-radius:#{$border}px;border-top-right-radius:#{$border}px;border-bottom-right-radius:#{$border}px;border-bottom-left-radius:#{$border}px;}
     ::-webkit-scrollbar-thumb:window-inactive {background-color:#{$color};}
 }
+// NOTE: hi-res laptops and desktops
+@media (min-width:1281px){}
+// NOTE: big landscape tablets, laptops, and desktops
+@media (min-width:1025px) {}
+// NOTE: tablet, landscape iPad, lo-res laptops ands desktops
+@media (min-width:961px) {}
+// NOTE: portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones
+@media (min-width:641px) {}
+// NOTE: portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide.
+@media (min-width:481px) {}
+// NOTE: 320px smartphones, iPhone, portrait 480x320 phones
+@media (min-width:150px) {}
 // inherit
 // text-overflow:ellipsis;
 // @-moz-document url-prefix() {}

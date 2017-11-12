@@ -7,4 +7,9 @@ letId PHP Framework
 // error_reporting(-1);
 // ini_set('error_reporting', E_ALL);
 define('app_initiated', microtime(true));
-$loader=require __DIR__ . '/vendor/autoload.php';
+require_once 'vendor/autoload.php';
+$application = new app\routeController();
+if (__FILE__ == $_SERVER['SCRIPT_FILENAME']) {
+  $application->requestBefore();
+  require_once 'public/index.php';
+}

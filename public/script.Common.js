@@ -126,7 +126,7 @@ var fn={
 						//item.d && item.d.html || item.d && item.d.name || !item.l && item.d.text
 						if (!item.l) list.append($(fn.tag(item.t), item.d));
 							else if (item.d) var cmp = item.d;
-								else var cmp = null
+								else var cmp = null;
 					}
 					if(item.l && item.l.length){
 						var sublist = $(fn.tag(item.t),cmp);

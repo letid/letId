@@ -1,105 +1,18 @@
-div{
-  &#header{
-    padding: 10px 0px;
-    // a{
-    //   &#MyOrdbok-logo{
-    // 
-    //     span{ 
-    //       display: inline-block; font-size: 12px;margin-top:30px; color:#318ed7; text-align: center; text-shadow: #BBB 0px 0px 1px; padding: 0px 1px;
-    //       
-    //       &:last-child{
-    //         
-    //       }
-    //     }
-    //   }
-    // }
-    
-    ol#MyOrdbok-logo{
-      display: none; height:32px; width: 50px;background-image: url(../img/m.png); 
-      background-size: contain;
-      background-repeat: no-repeat; text-align: center; background-position: center center; color: #CCCCCC;
-      list-style: none;
-      li{
-        a{
-          display: block;
-          span{
-            display: inline-block; font-size: 12px;margin-top:30px; color:#318ed7; text-align: center; text-shadow: #BBB 0px 0px 1px; padding: 0px 1px;
-          }
-        }
-        &:hover{
-          span{
-            &:first-child{
-              color:#676767;
-            }
-          }
-        }
-      }
-    }
-    
-    form[name=search]{
-      display:table; z-index:2; 
-      position: relative; 
-      width:100%;
-      background-color: #fff;
-      @include box-shadow(0px, 0px, 1px, 1px, darken(#ccc,10%));
-      // border-collapse: separate;border-spacing:5px 2px;
-      >p{
-        display:table-cell;vertical-align:middle;
-        height:100%; 
-        input,button{
-          outline: none;font-size: 15px; height:32px; line-height: 25px;
-          border: 0px; width: 100%;
-          &[type=search]{
-            width:99%; padding-left:1%;
-            &::selection{ 
-              background: #569ed7; color: #FFF;
-            }
-          }
-          &[type=submit]{
-            font-size: 20px; 
-            background-color: #fff;
-            color: $ColorMain;
-            text-shadow: #666 0px 1px 1px; 
-            font-family: "myordbok";
-            border-left:0px solid lighten($ColorMain,30%);
-            text-shadow: #ccc 1px 1px 1px;
-            width: 40px; 
-            &:hover{
-              color: darken($ColorMain,10%);
-            }
-          }
-        }
-        &:first-child { 
-           width:100%;
-        }
-      }
-      div{
-        &#suggest{
-          // display:none;
-          display:block;
-          position:absolute;width:100%;left:0px;top:calc(100% + 1px);  background-color:#fff;line-height:19px;font-size:14px;
-          @include box-shadow(0px, 1px, 1px, 1px, darken(#ccc,10%));
-          border-radius: 0 0 2px 2px;
-          p{
-            display:block;padding:1px 1%;color:#666;line-height: 24px;
-            b{
-              color:darken($ColorMain,10%);text-shadow:#ccc 0px 0px 1px;font-weight:normal;
-            }
-            &.selected{ color: #0661a9; background-color: lighten($ColorMain,40%); }
-            &:last-child{margin-bottom:1px;}
-          }
-          &:empty{
-            display: none;
-          }
+
+div.column {
+  ol#MyOrdbok-logo{
+    display: none;
+  }
+  form[name=search]{
+    // width: 98%; margin:2px 1%;
+    >p{
+      button{
+        &[type=submit]{
+          width: 35px;
+          border:0;
+          background-color: #fff;
         }
       }
     }
   }
 }
-/*
-form[name=search].in{border-color:#569ed7;}
-form[name=search].in #suggest{display:block; box-shadow: 0px 1px 1px 1px #8fbee3;}
-form[name=search].in input{ }
-form[name=search].in input[type=button]{color:#F3F3F3;background-color: #569ed7; }
-form[name=search] #suggest:empty{display:none;}
-*/

@@ -12,6 +12,8 @@ Installing dependencies
 ---
 composer install
 composer install -o --no-dev
+npm install request --save-dev
+npm install ini --save-dev
 
 Updating dependencies
 ---

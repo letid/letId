@@ -25,6 +25,7 @@ npm update npm -g
 
 # Update package.json
 npm update --save-dev
+npm install --only=dev
 npm update g
 npm update fs-extra -g
 npm update graceful-fs -g

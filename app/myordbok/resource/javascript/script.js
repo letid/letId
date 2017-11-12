@@ -10,21 +10,41 @@
 			suggest:{
 	      // =require script.Suggestion.js
 	    },
+			toggle:{
+	      // =require script.Toggle.js
+	    },
+			word:{
+	      // =require script.Word.js
+	    },
 			speech:function(){
 				var audio = doc.createElement('audio');
-				audio.src = fn.Url([fn.api,'speech',{q:core.x.text(),l:core.c[1]}]);
+				audio.src = fn.Url([fn.api,'speech',{q:core.x.parent().text(),l:core.c[1]}]);
+				core.x.addClass('playing');
 				audio.load();
 				audio.play();
+				audio.addEventListener("ended", function(){
+				    //  myAudio.currentTime = 0;
+				    //  console.log("ended");
+						 core.x.removeClass('playing');
+				});
 			},
 	    click:function(){
 				$(doc).on('click',fn.Class('zA'), function(event){
-					var x=$(this); core.x=x; 
-					// core.r=zj.Ad(x); 
-					core.c=x.attr('class').split(' '); 
+					var x=$(this); core.x=x;
+					// core.r=zj.Ad(x);
+					core.c=x.attr('class').split(' ');
 					// core.i=zj.Ai(x);
 					coreInitiate(core.c);
 					event.preventDefault();
 					event.stopPropagation();
+				});
+	    },
+	    auto:function(){
+				// console.log(fn.Class('zO'));
+				$(fn.Class('zO')).each(function() {
+					var x=$(this); core.x=x;
+					core.c=x.attr('class').split(' ');
+					coreInitiate(core.c);
 				});
 	    },
 	    img:{
@@ -34,11 +54,11 @@
 	    }
 		};
     function coreInitiate(x) {
-      if(core[x[0]] && $.isFunction(core[x[0]])) core[x[0]](); 
+      if(core[x[0]] && $.isFunction(core[x[0]])) core[x[0]]();
         else if(core[x[0]] && $.isFunction(core[x[0]][x[1]])) core[x[0]][x[1]]();
-					else if(core[x[0]] && $.isFunction(core[x[0]][0])) core[x[0]][0](); 
+					else if(core[x[0]] && $.isFunction(core[x[0]][0])) core[x[0]][0]();
     };
-    $.each(is,function(i,x){ coreInitiate(x.split(' '))});
+    $.each(is,function(i,x){coreInitiate(x.split(' '))});
 	};
 })(jQuery,document);
 /*

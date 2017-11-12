@@ -9,16 +9,45 @@ class api extends mapController
     app\avail::log()->counter();
   }
   /*
-  api/test
+  api
   */
   public function home()
   {
     return array(
       app\avail::$config['name']=>app\avail::$config['version']
     );
-    // return app\avail::$config;
-    // $_GET[app\avail::$config['name']]=app\avail::$config['version'];
-    // return $_GET;
+  }
+  /*
+  api/nume
+  */
+  public function nume()
+  {
+    $q = isset($_GET['q'])?str_replace('.','',$_GET['q']):0;
+    $o = new app\component\nume($q);
+    return $o->request();
+  }
+  /*
+  api/nune
+  */
+  public function nune()
+  {
+    $q = isset($_GET['q'])?str_replace('.','',$_GET['q']):0;
+    $o = new app\component\nune($q);
+    return $o->request();
+  }
+  /*
+  api/thesaurus
+  */
+  public function thesaurus()
+  {
+
+  }
+  /*
+  api/dictionary
+  */
+  public function dictionary()
+  {
+    return app\avail::configuration()->dictionaries;
   }
   /*
   api/definition?q=love
@@ -26,7 +55,7 @@ class api extends mapController
   */
   public function definition()
   {
-    return app\dictionary::search()->definition();
+    return app\dictionary\request::search()->definition();
   }
   /*
   api/suggestion?q=love
@@ -34,7 +63,7 @@ class api extends mapController
   */
   public function suggestion()
   {
-    return app\dictionary::search()->suggestion();
+    return app\dictionary\request::search()->suggestion();
   }
   /*
   api/speech?q=love&l=en
@@ -46,9 +75,8 @@ class api extends mapController
     if (isset($_GET['q'])) {
       $q = urlencode($_GET['q']);
       if (isset($_GET['l'])) {
-        $l = $_GET['l'];        
+        $l = $_GET['l'];
         // $this->responseType='audio';
-
         $this->responseType=array(
           // 'Content-Type:text/plain'
           // 'Content-Type:application/json',
@@ -59,11 +87,11 @@ class api extends mapController
           'Pragma:cache'
         );
         // header("Accept-Ranges:bytes");
-        // header("Content-type:audio/mpeg"); 
-        // header("Content-Transfer-Encoding: binary"); 
+        // header("Content-type:audio/mpeg");
+        // header("Content-Transfer-Encoding: binary");
         // header("Pragma:cache");
         return file_get_contents(sprintf('https://translate.google.com/translate_tts?ie=UTF-8&q=%s&tl=%s&client=tw-ob', $q, $l));
-        // return 	'Ok';
+        // return 'Ok';
       }
     }
     return $_GET;
@@ -79,10 +107,17 @@ class api extends mapController
       if (isset($_GET['l'])) {
         $l = $_GET['l'];
         $this->responseType='text';
-        $o = app\componentService::googleTranslate('AIzaSyAQVd0rJkOQAwtgXlKc6SMJqFC2IZFGaVg');
+        $o = new app\component\translator('AIzaSyAQVd0rJkOQAwtgXlKc6SMJqFC2IZFGaVg');
         return $o->request($q,$l);
       }
     }
     return $_GET;
+  }
+  /*
+  api/post
+  */
+  public function post()
+  {
+    return app\editor\suggest::request(array_filter($_POST))->post();
   }
 }

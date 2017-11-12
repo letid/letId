@@ -19,7 +19,7 @@ class home extends mapController
     app\versoController::menu()->requestOne('definition');
     app\versoController::menu()->requestOne('password');
     app\versoController::menu(array(
-			'menu'=>'ol', 'class'=>'MyOrdbok', 'attr'=>array( 'id'=>'MyOrdbok-logo', 'data-name'=>app\avail::$config['lang'] ), 'list'=>'li', 'activeClass'=>'active', 'type'=>'dictionary'
+			'menu'=>'ol', 'class'=>'MyOrdbok', 'attr'=>array( 'id'=>'MyOrdbok-logo', 'data-lang'=>app\avail::$config['lang'] ), 'list'=>'li', 'activeClass'=>'active', 'type'=>'dictionary'
 		))->requestOne('dictionary');
     app\verseController::menu()->request();
     $this->timerfinish = $this->timeCounter->finish();
@@ -27,30 +27,54 @@ class home extends mapController
   }
   public function home()
   {
+    // $f = new \NumberFormatter("en", \NumberFormatter::SPELLOUT);
+    // echo $f->format(1432);
     // print_r(app\avail::$user);
     // print_r(app\avail::cookie()->user()->get());
+    // $date = new \DateTimeZone('Asia/Yangon');
+    // $date = new \DateTime('NOW', new \DateTimeZone('Asia/Yangon'));
+    // echo ltrim($date->format('m'), 0);
+    // echo $date->format('n'); //Month
+    // echo $date->format('j'); //Day
+    // echo $date->format('W'); //Day
+    // print_r($date);
+
+    // date_default_timezone_set('Asia/Yangon');
+    // $script_tz = date_default_timezone_get();
+    // echo $script_tz;
+    // echo ini_get('date.timezone');
+    // $today = getdate();
+    // print_r($today);
+    // echo time();
+    // if (strcmp($script_tz, ini_get('date.timezone'))){
+    //     echo 'Script timezone differs from ini-set timezone.';
+    // } else {
+    //     echo 'Script timezone and ini-set timezone match.';
+    // }
+    // $date = new \DateTime('7:10pm', new \DateTimeZone('Europe/Paris'));
+    // echo $date->format('Y-m-d H:i:sP');
     return array(
       'layout'=>array(
-        'Title'=>'Home',
-        'Description'=>'Description',
-        'Keywords'=>'PHP framework',
+        'Title'=>'Myanmar dictionary',
+        'Description'=>'online Myanmar dictionaries, available in 24 languages.',
+        'Keywords'=>'Myanmar dictionary, Myanmar definition, Burmese, norsk ordbok, burmissk',
         'page.id'=>'home',
         'page.class'=>'home',
         'page.content'=>array(
           'layout.bar'=>array(),
-          'layout.header'=>array(),
-          'layout.board'=>array(),
+          // 'layout.header'=>array(),
+          // 'layout.board'=>array(),
           'home'=>array(),
-          'layout.footer'=>array(),
+          // 'layout.footer'=>array(),
         )
       )
     );
   }
-  public function aboutUs()
+  public function about()
   {
     // app\versoController::requestTotal();
     app\verseController::requestTotal();
-    app\dictionary::requestTotal();
+    app\dictionary\request::requestTotal();
     return array(
       'layout'=>array(
         'Title'=>'About {name}, Free online Myanmar dictionaries',
@@ -61,14 +85,14 @@ class home extends mapController
         'page.content'=>array(
           'layout.bar'=>array(),
           'aboutus'=>array(
-            
+
             // 'locale.total'=>'3',
             // 'dictionaries.total'=>'24',
             'dictionaries'=>app\avail::html(
               array(
                 'ol'=>array(
                   // 'text'=>app\componentService::dictionaries(),
-                  'text'=>app\dictionary::requestMenu(),
+                  'text'=>app\dictionary\request::requestMenu(),
                   'attr'=>array(
                     'class'=>array(
                       'dictionary'
@@ -87,9 +111,9 @@ class home extends mapController
   {
     return array(
       'layout'=>array(
-        'Title'=>'ddd',
-        'Description'=>'ddd',
-        'Keywords'=>'PHP framework',
+        'Title'=>'{lang.name} - Myanmar',
+        'Description'=>'online {lang.name} to Myanmar dictionary',
+        'Keywords'=>'{lang.name}, Myanmar, dictionary, definition',
         'page.id'=>'dd',
         'page.class'=>'dd',
         'page.content'=>array(
@@ -100,7 +124,7 @@ class home extends mapController
             'dictionaries'=>app\avail::html(
               array(
                 'ol'=>array(
-                  'text'=>app\dictionary::requestMenu(),
+                  'text'=>app\dictionary\request::requestMenu(),
                   'attr'=>array(
                     'class'=>array(
                       'dictionary'
@@ -139,8 +163,8 @@ class home extends mapController
     return array(
       'layout'=>array(
         'Title'=>'Privacy',
-        'Description'=>'Privacy',
-        'Keywords'=>'PHP framework, privacy, policy',
+        'Description'=>'Your privacy is very important to us. Accordingly, we have developed this policy in order for you to understand how we collect, use, communicate and disclose and make use of personal information. The following outlines our privacy policy.',
+        'Keywords'=>'privacy, policy',
         'page.id'=>'privacy',
         'page.class'=>'privacy',
         'page.content'=>array(

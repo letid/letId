@@ -17,12 +17,6 @@ class sign extends mapController
       app\versoController::menu()->requestOne('user');
       app\versoController::menu()->requestOne('definition');
       app\versoController::menu()->requestOne('password');
-      app\versoController::menu(array(
-  			'class'=>'MyOrdbok', 'attr'=>array(
-          'id'=>'MyOrdbok-logo',
-          'data-name'=>app\avail::$config['lang']
-        ), 'activeClass'=>'active'
-  		))->requestOne('dictionary');
       app\verseController::menu()->request();
       $this->timerfinish = $this->timeCounter->finish();
     }

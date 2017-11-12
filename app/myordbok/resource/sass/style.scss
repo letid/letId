@@ -5,8 +5,8 @@ html{
   &.portrait{}
 }
 // COMMON
-// .hand{cursor:pointer;}
-// .zO{cursor:default;}
+// .cursor-hand{cursor:pointer;}
+// .cursor-default{cursor:default;}
 // .ellipsis{text-overflow:ellipsis;overflow:hidden;max-width:10px;}
 // .collapse-separate{border-collapse:separate;border-spacing:1px;}
 // .box-shadow{@include box-shadow(0px, 0px, 0px, 10px, #c5c5c5);}
@@ -36,6 +36,10 @@ textarea{}
 button{}
 body {
   @extend html; font-family:$Font; color:$Color;font-size:$FontSize; background-color: $ColorBackground;
+  &#home{
+    // background-image: url("/src/img/bg/noise.png");
+    // background-size: contain;
+  }
   >*{
     >div{
       >div{
@@ -43,8 +47,104 @@ body {
     }
   }
 }
-div.portal{
+
+div.portal {
+  // NOTE: Common
   position: relative;
+  &.bg-color {
+    // NOTE: set background image
+    &::before,&::after {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+    }
+    &::before {
+      z-index: -2;
+      background-color:rgba(49,142,215,0.5);
+      // border-width:1px 0px 1px 0px;
+      // border-style: solid;
+      // border-color: lighten($ColorMain,10%);
+      border: 1px solid lighten($ColorMain,10%);
+      border-width:1px 0px 1px 0px;
+      // box-shadow: 1px 0px 1px 1px $ColorMain;
+    }
+    &::after {
+      z-index: -1;
+      background-image: url("/src/img/bg/delete.jpg");
+      background-size: cover;
+      background-attachment: fixed;
+      opacity: 0.2;
+    }
+  }
+  &.detail {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    &::before{
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+    }
+    &::before {
+      z-index: -2;
+      // background-color:lighten(#ccc,19%);
+      // border-width:1px 0px 1px 0px;
+      // border-style: solid;
+      // border-color: lighten($ColorMain,10%);
+      // border: 1px solid lighten(#ccc,5%);
+      // border-width:0px 0px 1px 0px;
+      box-shadow:  0px 1px 0px 1px lighten(#ccc,10%);
+    }
+    >div{
+      padding-top: 5%;
+      padding-bottom: 5%;
+    }
+  }
+  &.home{}
+  &.about{}
+  &.definition{}
+  &.dictionary{}
+  >div{
+    position: inherit;
+    padding:0px 2%;
+    &.resize {
+      // padding:0px 3%;
+      width: 96%;
+      max-width:950px;
+    }
+    &.center {
+      margin: 0px auto;
+    }
+    >div{
+      position: inherit;
+      @import 'Common.logo';
+      @import 'Common.search';
+      // NOTE: bar
+      @import 'Portal.navigate';
+      // NOTE: header
+      @import 'Portal.row';
+      // @import 'Portal.responsive';
+      // NOTE: home
+      @import 'Portal.modest';
+      // NOTE: privacy, terms
+      @import 'Portal.docs';
+      // NOTE: about
+      @import 'Portal.wrapper';
+      // NOTE: definition
+      @import 'Portal.define';
+      // NOTE: myanmar-fonts
+      @import 'Portal.fonts';
+      // NOTE: grammar
+      @import 'Portal.grammar';
+    }
+  }
   &#bar{
     z-index:5;border-top:4px solid $ColorMain;
     ul{
@@ -57,91 +157,109 @@ div.portal{
       list-style: none;
     }
   }
-  &#header{z-index:3;}
-  &#content{z-index:2;}
-  &#footer{z-index:1;}
-  // &#zolai{z-index:8;}
-  // &#zozum{z-index:7;}
-  &#header .resize, &#board .resize, &#content .resize, &#footer .resize{
-    max-width:900px;
+  &#header{
+    z-index:4; padding: 1% 0px;
   }
-  
-  >div.resize{
-    padding:0px 2%; position: inherit;
-    >div.wrapper{
-      display: table; width: 100%;vertical-align:middle; position: inherit;
-      >div{
-        &.document{}
-        &.main{
-          display:table;width:100%;margin:0 auto;vertical-align: inherit;
-        }
-        &.column{
-          display:table-cell; vertical-align: inherit;table-layout:fixed;
-          &.left{
-            width: 100%;
-          }
-          &.right{
-            max-width:200px;//min-width:200px;max-width:200px;
-          }
-          &:empty{
-            display:none;
-          }
-        }
-        &.zm{}
-        &.document{}
-      }
+  &#content{
+    z-index:3;
+  }
+  &#content{
+    z-index:2;
+  }
+  &#footer{
+    z-index:1; padding: 2% 0;
+    @import 'footer.Common';
+  }
+  @media #{$media-mobile} {
+    &#bar{
+      @import 'bar.Mobile';
+    }
+    &#header{
+      @import 'header.Mobile';
+    }
+    &#board{
+      // @import 'board.Mobile';
+    }
+    &#content{
+      // @import 'content.Mobile';
+    }
+    &#footer{
+      @import 'footer.Mobile';
+    }
+  }
+  @media #{$media-tablet} {
+    &#bar{
+      @import 'bar.Tablet';
+    }
+    &#header{
+      @import 'header.Tablet';
+    }
+    &#board{
+      // @import 'board.Tablet';
+    }
+    &#content{
+      // @import 'content.Tablet';
+    }
+    &#footer{
+      @import 'footer.Tablet';
+    }
+  }
+  @media #{$media-desktop} {
+    &#bar{
+      @import 'bar.Desktop';
+    }
+    &#header{
+      @import 'header.Desktop';
+    }
+    &#board{
+      // @import 'board.Desktop';
+    }
+    &#content{
+      // @import 'content.Desktop';
+    }
+    &#footer{
     }
   }
 }
-// @import 'style.Bar.desktop';
-/* hi-res laptops and desktops */
-@media (min-width:1281px){}
-/* big landscape tablets, laptops, and desktops */
-@media (min-width:1025px) {}
-/* tablet, landscape iPad, lo-res laptops ands desktops */
-@media (min-width:961px) {}
-/* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */
-@media (min-width:641px) {}
-/* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */ 
-@media (min-width:481px) {}
-/* 320px smartphones, iPhone, portrait 480x320 phones */
-@media (min-width:150px) {}
-
-
-div{
-  &#bar{
-    
+.text-center {
+  text-align: center;
+}
+.text-left {
+  text-align: left;
+}
+.text-right {
+  text-align: right;
+}
+@media #{$media-mobile} {
+  .text-center-m{
+    text-align: center;
   }
-  &#header{
-    
+  .text-left-m{
+    text-align: left;
   }
-  &#board{
-    
-  }
-  &#content{
-    @import 'content.Docs';
-  }
-  &#footer{
-    
+  .text-right-m{
+    text-align: right;
   }
 }
-
-// @media (min-width:150px) and (max-width:961px) {
-//   @import 'style.Bar.mobile';
-//   @import 'style.Header.mobile';
-// }
-@media (min-width:150px) and (max-width:641px) {
-  @import 'bar.Mobile';
-  @import 'header.Mobile';
-  @import 'footer.Mobile';
+@media #{$media-tablet} {
+  .text-center-t{
+    text-align: center;
+  }
+  .text-left-t{
+    text-align: left;
+  }
+  .text-right-t{
+    text-align: right;
+  }
 }
-@media (min-width:641px) and (max-width:961px) {
-  @import 'bar.Tablet';
-  @import 'header.Tablet';
-  @import 'footer.Tablet';
-}
-@media (min-width:961px) {
-  @import 'bar.Desktop';
-  @import 'header.Desktop';
-  @import 'footer.Desktop';
+@media #{$media-desktop} {
+  .text-center-d{
+    text-align: center;
+  }
+  .text-left-d{
+    text-align: left;
+  }
+  .text-right-d{
+    text-align: right;
+  }
 }

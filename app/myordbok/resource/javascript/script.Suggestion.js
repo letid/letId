@@ -1,5 +1,6 @@
 form:'search',field:'q',button:'submit',classIn:'in',className:'selected',
 listCurrent:-1,listTotal:0,delay:0,result:'#suggest',
+// $(document).MyOrdbok(['suggest ready','click','img set']);
 ready:function(){
 	var e=this;
 	e.form=$(fn.Form(e.form));
@@ -17,7 +18,7 @@ ready:function(){
 		e.form.addClass(e.classIn);
 		if(e.arrows(k.keyCode,k.ctrlKey||k.metaKey) != true) setTimeout(function(){e.listener(lastVal);},e.delay);
 		// if(e.arrows(k.keyCode,k.ctrlKey||k.metaKey) != true) e.listener(lastVal);
-		
+
 	});
 	// $(this.button).click(function(){
 	// 	this.form.submit();
@@ -56,18 +57,18 @@ arrows:function(keyCode,ctrlDown){
 		e.result.children().each(function(i){
 			if(i == e.listCurrent) e.add(this);
 		}); return true;
-	}else if($.inArray(keyCode,[13,37,39,16,17,116]) >= 0){ 
+	}else if($.inArray(keyCode,[13,37,39,16,17,116]) >= 0){
 		return true;
-	}else if(ctrlDown && $.inArray(keyCode,[67]) >= 0){ 
+	}else if(ctrlDown && $.inArray(keyCode,[67]) >= 0){
 		return true; //c,v,x [67,86,88]
-	}else if(keyCode == 27){ 
+	}else if(keyCode == 27){
 		// Escape
 		// e.field.val(''); return true;
 	}else if(keyCode == 13){
 		// Enter
 		return false;
-	}else{ 
-		e.listCurrent = -1; return false; 
+	}else{
+		e.listCurrent = -1; return false;
 	}
 },
 add:function(x){

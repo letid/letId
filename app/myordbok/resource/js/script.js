@@ -86,9 +86,9 @@
                 s: function(e, t, n) {
                     var i;
                     if (n) {
-                        var r = new Date();
-                        r.setTime(r.getTime() + n * 24 * 60 * 60 * 1e3);
-                        i = "; expires=" + r.toGMTString();
+                        var a = new Date();
+                        a.setTime(a.getTime() + n * 24 * 60 * 60 * 1e3);
+                        i = "; expires=" + a.toGMTString();
                     }
                     document.cookie = escape(e) + "=" + escape(t) + i + "; path=/";
                 },
@@ -96,9 +96,9 @@
                     var t = escape(e) + "=";
                     var n = document.cookie.split(";");
                     for (var i = 0; i < n.length; i++) {
-                        var r = n[i];
-                        while (r.charAt(0) === " ") r = r.substring(1, r.length);
-                        if (r.indexOf(t) === 0) return unescape(r.substring(t.length, r.length));
+                        var a = n[i];
+                        while (a.charAt(0) === " ") a = a.substring(1, a.length);
+                        if (a.indexOf(t) === 0) return unescape(a.substring(t.length, a.length));
                     }
                     return null;
                 },
@@ -106,21 +106,21 @@
                     this.s(e, "", -1);
                 }
             },
-            html: function(t, n, r) {
-                e.each(n, function(n, a) {
-                    var s = function(t, n, r) {
+            html: function(t, n, a) {
+                e.each(n, function(n, r) {
+                    var s = function(t, n, a) {
                         if (t) {
                             if (t.t) {
-                                if (!t.l) n.append(e(i.tag(t.t), t.d)); else if (t.d) var a = t.d; else var a = null;
+                                if (!t.l) n.append(e(i.tag(t.t), t.d)); else if (t.d) var r = t.d; else var r = null;
                             }
                             if (t.l && t.l.length) {
-                                var l = e(i.tag(t.t), a);
+                                var l = e(i.tag(t.t), r);
                                 for (index in t.l) s(t.l[index], l);
-                                n[r || "append"](l);
+                                n[a || "append"](l);
                             }
                         }
                     };
-                    s(a, t, r);
+                    s(r, t, a);
                 });
                 return t;
             },
@@ -147,7 +147,7 @@
             }
         };
         i.data.link([ "api" ]);
-        var r = {
+        var a = {
             suggest: {
                 form: "search",
                 field: "q",
@@ -172,10 +172,10 @@
                         }, 200);
                     }).keyup(function(n) {
                         var i = n || window.event;
-                        var r = e(this).val();
+                        var a = e(this).val();
                         t.form.addClass(t.classIn);
                         if (t.arrows(i.keyCode, i.ctrlKey || i.metaKey) != true) setTimeout(function() {
-                            t.listener(r);
+                            t.listener(a);
                         }, t.delay);
                     });
                 },
@@ -193,10 +193,10 @@
                         n.listTotal = t.length;
                         if (n.listTotal > 0) {
                             n.result.empty();
-                            e.each(t, function(t, r) {
+                            e.each(t, function(t, a) {
                                 e("<p>", {
-                                    title: r,
-                                    html: r.replace(new RegExp(i, "i"), "<b>$&</b>")
+                                    title: a,
+                                    html: a.replace(new RegExp(i, "i"), "<b>$&</b>")
                                 }).appendTo(n.result).mousemove(function() {
                                     n.add(this);
                                 });
@@ -248,34 +248,107 @@
                     });
                 }
             },
+            toggle: {
+                menu: function() {
+                    e("ul.menu li[data-toggle]").on("click", function() {
+                        var t = e(this);
+                        var n = t.data("toggle");
+                        var a = t.parent().next();
+                        t.addClass("active").siblings().removeClass("active");
+                        if (a.is(":hidden")) a.fadeIn("fast");
+                        a.children(i.Class(n)).fadeToggle("fast", function() {
+                            if (e(this).is(":hidden")) {
+                                a.fadeOut("fast");
+                                t.removeClass("active");
+                            }
+                        }).siblings().fadeOut("fast");
+                    });
+                }
+            },
+            word: {
+                help: function() {
+                    this.form(a.x.data("word")).appendTo(a.x);
+                },
+                suggest: function() {
+                    a.x.parent().replaceWith(this.form(a.x.data("word")));
+                },
+                form: function(t) {
+                    return e("<form>", {
+                        method: "POST"
+                    }).append(e("<div>").append(e("<input>", {
+                        type: "text",
+                        name: "word",
+                        value: t
+                    })), e("<div>").append(e("<span>").html("Meaning"), e("<textarea>", {
+                        name: "mean"
+                    })), e("<div>").append(e("<span>").html("Example"), e("<textarea>", {
+                        name: "exam"
+                    })), e("<p>").html(""), e("<div>", {
+                        "class": "submit"
+                    }).append(e("<input>", {
+                        type: "submit",
+                        name: "submit",
+                        value: "Post"
+                    }), e("<input>", {
+                        type: "reset",
+                        value: "Reset"
+                    }))).on("submit", this.submit);
+                },
+                submit: function(t) {
+                    t.preventDefault();
+                    var n = e(this);
+                    var a = n.children("p");
+                    a.html("...a moment please").removeClass();
+                    var r = e.post(i.Url([ i.api, "post" ]), i.serializeObject(e(this)), function() {}).done(function(e) {
+                        a.html(e.msg).addClass(e.status);
+                        if (e.status == "done") {
+                            n.children("div").hide();
+                        }
+                    }).fail(function(e, t, n) {
+                        a.html(n).addClass("fail");
+                    }).always(function() {});
+                }
+            },
             speech: function() {
                 var e = t.createElement("audio");
                 e.src = i.Url([ i.api, "speech", {
-                    q: r.x.text(),
-                    l: r.c[1]
+                    q: a.x.parent().text(),
+                    l: a.c[1]
                 } ]);
+                a.x.addClass("playing");
                 e.load();
                 e.play();
+                e.addEventListener("ended", function() {
+                    a.x.removeClass("playing");
+                });
             },
             click: function() {
                 e(t).on("click", i.Class("zA"), function(t) {
                     var n = e(this);
-                    r.x = n;
-                    r.c = n.attr("class").split(" ");
-                    a(r.c);
+                    a.x = n;
+                    a.c = n.attr("class").split(" ");
+                    r(a.c);
                     t.preventDefault();
                     t.stopPropagation();
+                });
+            },
+            auto: function() {
+                e(i.Class("zO")).each(function() {
+                    var t = e(this);
+                    a.x = t;
+                    a.c = t.attr("class").split(" ");
+                    r(a.c);
                 });
             },
             img: {
                 set: function() {}
             }
         };
-        function a(t) {
-            if (r[t[0]] && e.isFunction(r[t[0]])) r[t[0]](); else if (r[t[0]] && e.isFunction(r[t[0]][t[1]])) r[t[0]][t[1]](); else if (r[t[0]] && e.isFunction(r[t[0]][0])) r[t[0]][0]();
+        function r(t) {
+            if (a[t[0]] && e.isFunction(a[t[0]])) a[t[0]](); else if (a[t[0]] && e.isFunction(a[t[0]][t[1]])) a[t[0]][t[1]](); else if (a[t[0]] && e.isFunction(a[t[0]][0])) a[t[0]][0]();
         }
         e.each(n, function(e, t) {
-            a(t.split(" "));
+            r(t.split(" "));
         });
     };
 })(jQuery, document);
