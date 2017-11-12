@@ -1,6 +1,7 @@
 composer.phar
 /vendor/
 /src/
+/app/myordbok/*
 /app/*/Environment.ini
 *.[A-Z0-9].*
 

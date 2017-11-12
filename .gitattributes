@@ -17,6 +17,9 @@
 *.RTF	 diff=astextplain
 
 # Composer package excluded
+*.cmd               export-ignore
+*.md                export-ignore
+/.git               export-ignore
 /.git               export-ignore
 /tests              export-ignore
 .editorconfig       export-ignore
