@@ -1,7 +1,10 @@
 composer.phar
 /vendor/
 /src/
-/app/myordbok/*
+/tests/
+#/app/*
+#!/app/error/
+#!/app/lethil/
 /app/*/Environment.ini
 *.[A-Z0-9].*
 
@@ -12,7 +15,6 @@ composer.phar
 # =========================
 #CUSTOM
 # =========================
-production/*/*
 node_modules/
 backup
 nbproject
@@ -31,7 +33,5 @@ development/assets/*/job*
 #development/assets/*/*[job,Working,Tmp,Delete]*.*
 #development/*/*/[0-9]+.*
 #development/assets/js/[0-9]+.*
-/tests/
-/public/*.html
 ExampleTest.php
 TestCase.php
