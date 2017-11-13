@@ -19,8 +19,11 @@
 # Composer package excluded
 *.cmd               export-ignore
 *.md                export-ignore
+*.bat               export-ignore
+*.scss              export-ignore
+/*.js               export-ignore
 /.git               export-ignore
-/.git               export-ignore
+/app/lethil         export-ignore
 /tests              export-ignore
 .editorconfig       export-ignore
 .gitattributes      export-ignore
