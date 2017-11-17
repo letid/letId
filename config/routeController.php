@@ -8,12 +8,8 @@ class routeController extends \letId\request\http
   */
   protected $application = array(
     'myordbok'=>'myordbok.',
-    // 'lethil'=>'lethil.localhost',
-    // 'example'=>array(
-    //     'example.com','.example.com','.example.'
-    // ),
-    // 'myordbok'=>'myordbok.',
-    'lethil'=>''
+    'lethil'=>'lethil.',
+    'myordbok'=>''
   );
   /**
   * Common directory rewrite!
