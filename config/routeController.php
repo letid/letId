@@ -7,8 +7,8 @@ class routeController extends \letId\request\http
   * @var array/string
   */
   protected $application = array(
-    'myordbok'=>'myordbok.',
     'lethil'=>'lethil.',
+    'myordbok'=>'myordbok.',
     'myordbok'=>''
   );
   /**

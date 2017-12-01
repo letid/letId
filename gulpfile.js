@@ -9,7 +9,8 @@ var path=require('path'),Argv=require('minimist')(process.argv);
 //COMMON PACKAGE
 var fs=require('fs-extra'),clc=require('cli-color'),extend=require('node.extend');
 //REQUIRE PACKAGE
-var gulp=require('gulp'),sass=require('gulp-sass'),minifyCss=require('gulp-minify-css'),uglify=require('gulp-uglify'),concat=require('gulp-concat'),include=require('gulp-include');
+var gulp=require('gulp'),sass=require('gulp-sass'),minifyCss=require('gulp-clean-css'),
+uglify=require('gulp-uglify'),concat=require('gulp-concat'),include=require('gulp-include');
 // REQUIRE DATA
 var Package=JSON.parse(fs.readFileSync('package.json'));
 // GULP
@@ -34,9 +35,9 @@ var style = {
           beautify: true,
           comments:'license'
       },
-      compress:false,
-      //outSourceMap: true,
-      preserveComments:'license'
+      compress:false
+      //outSourceMap: true
+      // preserveComments:'license'
     }
   },
   compressed:{
