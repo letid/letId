@@ -16,10 +16,23 @@
 *.rtf	 diff=astextplain
 *.RTF	 diff=astextplain
 
-# Composer package excluded
+# Composer
+/composer.lock      export-ignore
+/composer.json      export-ignore
+/composer.phar      export-ignore
+/composer.php       export-ignore
+
+# Nodejs
+/package-lock.json  export-ignore
+/package.json       export-ignore
+
+# IIS
+web.config          export-ignore
+
+# Other
 *.cmd               export-ignore
-*.md                export-ignore
-*.bat               export-ignore
+/*.md               export-ignore
+/*.bat              export-ignore
 *.scss              export-ignore
 /*.js               export-ignore
 /.git               export-ignore
@@ -28,4 +41,3 @@
 .editorconfig       export-ignore
 .gitattributes      export-ignore
 .gitignore          export-ignore
-/composer.lock      export-ignore

@@ -20,5 +20,3 @@ $application->initiate();
 * Response: Html, termination execute
 */
 $application->response();
-
-// Options Indexes FollowSymLinks Includes ExecCGI
