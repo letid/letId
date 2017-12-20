@@ -9,8 +9,8 @@ namespace app
     */
     protected $application = array(
       'myordbok'=>'myordbok.',
-      'lethil'=>'lethil.',
-      'myordbok'=>''
+      'zaideih'=>'zaideih.',
+      'lethil'=>'lethil.'
     );
     /**
     * Common directory rewrite!
@@ -36,7 +36,7 @@ namespace app
     * NOTE: application's namespace, ANS can not be modified!
     */
     protected $configuration = array(
-      // 'storage.root'=>'D:/STORAGE',
+      // 'storage.root'=>'/storage',
       // Ini file
       // 'environment'=>'environment',
       'ANS'=>__NAMESPACE__

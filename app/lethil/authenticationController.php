@@ -1,6 +1,6 @@
 <?php
 namespace app;
-class authorizationController extends \letId\request\authorization
+class authenticationController extends \letId\request\authentication
 {
   protected $table = array(
     'user' => 'users'

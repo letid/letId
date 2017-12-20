@@ -1,5 +1,5 @@
 # Gulp
-`gulp --app={app.folder.name}`
+`gulp --app={app.folder.name} --style=compressed`
 
 # Composer
 

@@ -11,12 +11,11 @@ class home extends mapController
   }
   public function classConcluded()
   {
-    // app\versoController::menu()->request();
-    app\verseController::menu()->request();
-    app\versoController::menu()->requestOne('page');
-    app\versoController::menu()->requestOne('privacy');
-    app\versoController::menu()->requestOne('user');
-    app\versoController::menu()->requestOne('password');
+    app\verso::request('page')->menu();
+    app\verso::request('privacy')->menu();
+    app\verso::request('user')->menu();
+    app\verso::request('password')->menu();
+    app\verse::request()->menu();
     $this->timerfinish = $this->timeCounter->finish();
     // app\avail::assist()->error_get_last();
   }
@@ -32,35 +31,7 @@ class home extends mapController
           'page.content'=>array(
             'layout.header'=>array(),
             'home'=>array(
-              'Heading'=>'Todo',
-              'home.loop'=>array(
-                array(
-                  'loop.one'=>'first',
-                  'loop.two'=>'class',
-                ),
-                array(
-                  'loop.one'=>'second',
-                  // 'loop.two'=>app\avail::language('already a member'),
-                  'loop.two'=>'already a member',
-                  // 'loop.two'=>'Loop One of Two',
-                ),
-                array(
-                  'loop.one'=>'Loop Two of One',
-                  'loop.two'=>'Loop Two of Two',
-                ),
-                array(
-                  'loop.one'=>'Loop Two of One',
-                  'loop.two'=>'last',
-                )
-              ),
-              'home.li'=>array(
-                'home.li.one'=>'One of One',
-                'home.li.two'=>'One of Two',
-                'home.li.li'=>array(
-                  'home.li.li.one'=>'Two of One',
-                  'home.li.li.two'=>'Two of Two',
-                )
-              )
+              'Heading'=>'Home'
             ),
             'layout.footer'=>array()
         )
@@ -80,6 +51,60 @@ class home extends mapController
           'layout.header'=>array(),
           'aboutus'=>array(
             'Heading'=>'About us'
+          ),
+          'layout.footer'=>array()
+        )
+      )
+    );
+  }
+  public function template()
+  {
+    return array(
+      'layout'=>array(
+        'Title'=>'Template',
+        'Description'=>'Template',
+        'Keywords'=>'using the {name} service',
+        'page.id'=>'template',
+        'page.class'=>'template',
+        'page.content'=>array(
+          'layout.header'=>array(),
+          'sub/page'=>array(
+            'dynamic.template'=>array(
+              'sub/header'=>array(),
+              'sub/section'=>array()
+            )
+          ),
+          'layout.footer'=>array()
+        )
+      )
+    );
+  }
+  public function looping()
+  {
+    return array(
+      'layout'=>array(
+        'Title'=>'Looping',
+        'Description'=>'Looping',
+        'Keywords'=>'using the {name} service',
+        'page.id'=>'loop',
+        'page.class'=>'loop',
+        'page.content'=>array(
+          'layout.header'=>array(),
+          'loop/page'=>array(
+            'loop/loop'=>array(
+              array(
+                'loop.one'=>'Start looping'
+              ),
+              array(
+                'loop.one'=>'End looping'
+              )
+            ),
+            'loop/li'=>array(
+              'loop.one'=>'Another loop',
+              'loop/li.li'=>array(
+                'loop.one'=>'nested loop'
+              )
+            )
           ),
           'layout.footer'=>array()
         )

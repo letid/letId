@@ -14,7 +14,7 @@ namespace app
     */
     private function requestVisitsUser()
     {
-      $visits = avail::$database->select('locale, lang, view, modified, created')->from($this->table)->where($this->rowSelector)->execute()->rowsCount()->toArray();
+      $visits = avail::$database->select('locale, lang, view, modified, created')->from($this->table)->where($this->rowSelector)->execute()->rowsCount()->fetchAll();
       if ($visits->rowsCount) {
         avail::configuration($visits->rows[0])->merge();
       } else {

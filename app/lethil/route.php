@@ -38,6 +38,16 @@ class route
       )
     ),
     array(
+      'Page'=>'template',
+      'Method'=>'template',
+      'Menu'=>'Template',
+      array(
+        'Page'=>'loop',
+        'Method'=>'looping',
+        'Menu'=>'Looping'
+      )
+    ),
+    array(
       'Page'=>'privacy',
       'Method'=>'privacy',
       'Menu'=>'Privacy',

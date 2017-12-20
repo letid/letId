@@ -11,12 +11,11 @@ class sign extends mapController
   }
   public function classConcluded()
   {
-    // app\versoController::menu()->request();
-    app\verseController::menu()->request();
-    app\versoController::menu()->requestOne('page');
-    app\versoController::menu()->requestOne('privacy');
-    app\versoController::menu()->requestOne('user');
-    app\versoController::menu()->requestOne('password');
+    app\verso::request('page')->menu();
+    app\verso::request('privacy')->menu();
+    app\verso::request('user')->menu();
+    app\verso::request('password')->menu();
+    app\verse::request()->menu();
     $this->timerfinish = $this->timeCounter->finish();
     // app\avail::assist()->error_get_last();
   }
@@ -375,7 +374,7 @@ class sign extends mapController
       // )
     );
 
-    // $db = app\avail::$database->select()->from('users_desc')->where('userid',app\avail::$user->userid)->execute()->toArray();
+    // $db = app\avail::$database->select()->from('users_desc')->where('userid',app\avail::$user->userid)->execute()->fetchAll();
     // // print_r($db);
     // if ($db->rows) {
     //     // print_r($db->rows);

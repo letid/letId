@@ -4,10 +4,7 @@
     "type": "project",
     "license": "MIT",
     "homepage": "https://github.com/letid/lethil",
-    "repositories": [{
-        "type": "git",
-        "url": "https://github.com/letid/lethil.git"
-    }],
+
     "keywords": [
         "developer",
         "project",
@@ -24,26 +21,26 @@
     },
     "minimum-stability": "dev",
     "require": {
-        "php": ">=5.5.9"
+        "php": ">=5.5.9",
+        "google/apiclient": "~2.0@dev"
     },
     "scripts": {},
     "config": {
-        "vendor-dir": "vendor",
-        "preferred-install": "dist"
+        "vendor-dir": "vendor"
     },
     "autoload": {
         "psr-0": {
             "app": "config/"
         },
-        "psr-4": {},
+        "psr-4": {
+            "letId\\": "src/framework/src/"
+        },
         "classmap": [],
         "files": []
     },
     "autoload-dev": {
         "psr-0": {},
-        "psr-4": {
-            "letId\\": "src/framework/src/"
-        },
+        "psr-4": {},
         "classmap": [],
         "files": []
     },

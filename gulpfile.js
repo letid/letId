@@ -37,7 +37,6 @@ var style = {
       },
       compress:false
       //outSourceMap: true
-      // preserveComments:'license'
     }
   },
   compressed:{
@@ -48,14 +47,9 @@ var style = {
       outputStyle: 'compressed'
     },
     js:{
-      //mangle:false,
+      mangle:true,
       output:{
-          beautify: true,
-          comments:'license'
-      },
-      compress:true,
-      //outSourceMap: true,
-      preserveComments:'license'
+      }
     }
   },
 };
