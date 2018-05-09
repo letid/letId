@@ -58,7 +58,7 @@ var codeStyle = Argv.style;
 if (codeStyle && style[codeStyle]) {
   codeStyle = style[codeStyle];
 } else {
-  codeStyle=style.normal;
+  codeStyle=style.compressed;
 }
 // NOTE: SASS
 gulp.task('sass', function () {

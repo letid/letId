@@ -7,7 +7,7 @@ error_reporting(E_ALL); ini_set('display_errors', '1');
 /**
 * Initiate autoload
 */
-require_once '..'.$_SERVER['PHP_SELF'];
+require_once '../'.$_SERVER['PHP_SELF'];
 /**
 * Initiate HTTP_HOST, REQUEST_URI according to the Application's Routine!
 */

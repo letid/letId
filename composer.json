@@ -30,10 +30,10 @@
     },
     "autoload": {
         "psr-0": {
-            "app": "config/"
         },
         "psr-4": {
-            "letId\\": "src/framework/src/"
+          "app\\": "config/",
+          "letId\\": "src/framework/src/"
         },
         "classmap": [],
         "files": []
